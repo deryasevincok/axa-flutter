@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'main_page.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -91,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginPage()),
+                                builder: (context) => MainPage()),
                           );
                         },
                         child: Container(
@@ -116,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
