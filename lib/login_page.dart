@@ -38,18 +38,21 @@ class _LoginPageState extends State<LoginPage> {
                               "DERT",
                               style: TextStyle(
                                 fontSize: 50.0,
+                                fontFamily: 'Lugrasimo',
                               ),
                             ),
                             Text(
                               "VARSA",
                               style: TextStyle(
                                 fontSize: 50.0,
+                                fontFamily: 'Lugrasimo',
                               ),
                             ),
                             Text(
                               "DERMAN",
                               style: TextStyle(
                                 fontSize: 50.0,
+                                fontFamily: 'Lugrasimo',
                               ),
                             ),
                             Text(
@@ -57,6 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                               style: TextStyle(
                                 fontSize: 50.0,
                                 color: Colors.red,
+                                fontFamily: 'Lugrasimo',
                               ),
                             ),
                           ],
@@ -71,7 +75,10 @@ class _LoginPageState extends State<LoginPage> {
                               borderSide: BorderSide(color: Colors.white),
                             ),
                             labelText: 'USERNAME',
-                            labelStyle: TextStyle(color: Colors.white),
+                            labelStyle: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Pacifico',
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -81,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'PASSWORD',
-                            labelStyle: TextStyle(color: Colors.white),
+                            labelStyle: TextStyle(color: Colors.white, fontFamily: 'Pacifico'),
                           ),
                         ),
                       ],
@@ -92,15 +99,14 @@ class _LoginPageState extends State<LoginPage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => MainPage()),
+                            MaterialPageRoute(builder: (context) => MainPage()),
                           );
                         },
                         child: Container(
                           child: Center(
                             child: Text(
                               "LOGIN",
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: Colors.white,fontFamily: 'Oswald',fontSize: 20.0),
                             ),
                           ),
                           decoration: BoxDecoration(
