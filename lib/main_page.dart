@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'extension.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
+  //badge
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3, // Number of tabs
+      length: 3, // tab sayısı
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
@@ -23,8 +27,7 @@ class MainPage extends StatelessWidget {
                           "MERHABA",
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 32,
-                            fontFamily: 'Pacifico',
+                            fontSize: context.sWidth * 0.10,
                           ),
                         ),
                         Row(
@@ -33,25 +36,25 @@ class MainPage extends StatelessWidget {
                               "DERYA",
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 32,
+                                fontSize: context.sWidth * 0.10,
                               ),
                             ),
-                            Icon(
-                              Icons.abc_outlined,
-                              color: Colors.yellow,
+                            FaIcon(
+                              FontAwesomeIcons.handshakeSimple,
+                              color: Colors.lightBlue,
                             ),
                           ],
                         ),
                       ],
                     ),
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 50.0,
                       backgroundImage: AssetImage('assets/galata.jpg'),
                     ),
                   ],
                 ),
               ),
-              TabBar(
+              const TabBar(
                 labelColor: Colors.black,
                 unselectedLabelColor: Colors.grey,
                 tabs: [
@@ -70,123 +73,132 @@ class MainPage extends StatelessWidget {
                 child: TabBarView(
                   children: [
                     //bana özele girince yapılacaklar
-                    Container(
-                      child: Column(
-                        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              "İzin İşlemleri",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  decoration: TextDecoration.underline),
+                    SingleChildScrollView(
+                      child: Container(
+                        child: Column(
+                          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: Text(
+                                "İzin İşlemleri",
+                                style: TextStyle(
+                                    fontSize: context.sWidth * 0.05,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    decoration: TextDecoration.underline),
+                              ),
                             ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.blue,
-                                    borderRadius: BorderRadius.circular(
-                                        10.0), // Set the border radius
-                                  ),
-                                  margin: EdgeInsetsDirectional.all(5.0),
-                                  child: Column(
-                                    children: [
-                                      Icon(Icons.add_box_sharp),
-                                      Text(
-                                        "Kalan izin",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "12",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.yellowAccent,
-                                    borderRadius: BorderRadius.circular(
-                                        10.0), // Set the border radius
-                                  ),
-                                  margin: EdgeInsetsDirectional.all(5.0),
-                                  child: Column(
-                                    children: [
-                                      Icon(Icons.add_box_sharp),
-                                      Text(
-                                        "Kullanılan",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "3",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.purple,
-                                    borderRadius: BorderRadius.circular(
-                                        10.0), // Set the border radius
-                                  ),
-                                  margin: EdgeInsetsDirectional.all(5.0),
-                                  child: Column(
-                                    children: [
-                                      Icon(Icons.add_box_sharp),
-                                      Text(
-                                        "Mazaret",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "10",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            child: Column(
+                            Row(
+                              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Text(
-                                    "Hızlı Menü",
-                                    style: TextStyle(color: Colors.black,fontSize: 30.0),
+                                IzinIslemleri(
+                                  Color(0xFFD5EEFD),
+                                  "Kalan izin",
+                                  "12",
+                                  const FaIcon(
+                                    FontAwesomeIcons.faceSmile,
+                                    color: Colors.blue,
                                   ),
                                 ),
-                                HizliMenu(Colors.red,"İş seyehatı","Seyehatlarınız planlayınız."),
-                                HizliMenu(Colors.orangeAccent,"İş masrafları","İş işle ilgili masraflarınızı yönetiniz."),
-                                HizliMenu(Colors.pinkAccent,"Sağlık İşlemleri","Hastahane faturalarını yönetiniz."),
-
+                                IzinIslemleri(
+                                  const Color(0xFFFDE4CF),
+                                  "Kullanılan",
+                                  "10",
+                                  FaIcon(FontAwesomeIcons.faceSadCry,
+                                      color: Colors.lightBlue),
+                                ),
+                                IzinIslemleri(
+                                  const Color(0xFFF1C0E8),
+                                  "Mazaret",
+                                  "10",
+                                  const FaIcon(FontAwesomeIcons.faceLaugh,
+                                      color: Colors.lightBlue),
+                                ),
                               ],
                             ),
-                          ),
-                        ],
+                            Container(
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 40.0),
+                                child: Column(
+                                  children: [
+                                    const Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        "Hızlı Menü",
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 30.0),
+                                      ),
+                                    ),
+                                    HizliMenu(
+                                        Color.fromRGBO(241, 192, 232, 0.38),
+                                        "İş seyehatı",
+                                        "Seyehatlarınız planlayınız.",
+                                        FaIcon(FontAwesomeIcons.planeDeparture)),
+                                    HizliMenu(
+                                        Color(0xFFFDE4CF),
+                                        "İş masrafları",
+                                        "İş işle ilgili masraflarınızı yönetiniz.",
+                                        const FaIcon(
+                                            FontAwesomeIcons.moneyCheckDollar)),
+                                    HizliMenu(
+                                        const Color(0xFFFBECED),
+                                        "Sağlık İşlemleri",
+                                        "Hastahane faturalarını yönetiniz.",
+                                        FaIcon(FontAwesomeIcons.peopleRobbery)),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(context.sHeight * 0.03),
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text(
+                                      "Günün Yemeği",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: context.sHeight * 0.03
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.all(context.sHeight * 0.01),
+                                  child: Container(
+                                    color: Colors.red,
+                                    child: const Row(
+                                      children: [
+                                        Column(
+                                          children: [
+                                            //TODO SizedBox değil extension kullanılacak.
+                                            Text("Pazartesi",style: TextStyle(color: Colors.purple),),
+                                            SizedBox(height: 10.0),
+                                            Text("Yayla çorbası"),
+                                            SizedBox(height: 5.0),
+                                            Text("Soslu Tavuk Wrap"),
+                                            SizedBox(height: 5.0),
+                                            Text("Patates kızartması"),
+                                            SizedBox(height: 5.0),
+                                            Text("Salata"),
+                                          ],
+                                        ),
+
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
 
                     //axada hayata girince yapılacaklar
-                    Center(
+                    const Center(
                       child: Text(
                         "Axa'da Hayat",
                         style: TextStyle(
@@ -196,7 +208,7 @@ class MainPage extends StatelessWidget {
                     ),
 
                     //uygulamalara girince yapılacaklar
-                    Center(
+                    const Center(
                       child: Text(
                         "Uygulamalar",
                         style: TextStyle(
@@ -215,26 +227,68 @@ class MainPage extends StatelessWidget {
   }
 }
 
-class HizliMenu extends StatelessWidget {
-
+class IzinIslemleri extends StatelessWidget {
   final Color color;
   final String text1;
   final String text2;
+  final FaIcon icon;
 
-  HizliMenu(this.color,this.text1,this.text2);
+  IzinIslemleri(this.color, this.text1, this.text2, this.icon);
 
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(
+            context.sWidth * 0.02,
+          ), // Set the border radius
+        ),
+        margin: EdgeInsetsDirectional.all(
+          context.sWidth * 0.04,
+        ),
+        child: Column(
+          children: [
+            icon,
+            Text(
+              text1,
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              text2,
+              style:
+                  const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class HizliMenu extends StatelessWidget {
+  final Color color;
+  final String text1;
+  final String text2;
+  final FaIcon icon;
+
+  HizliMenu(this.color, this.text1, this.text2, this.icon);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(
+        context.sWidth * 0.02,
+      ),
       child: ListTile(
-        onTap:(){
+        onTap: () {
           showModalBottomSheet<void>(
             context: context,
             builder: (BuildContext context) {
               return Container(
-                height: 200,
+                height: context.sHeight,
                 color: Colors.amber,
                 child: Center(
                   child: Column(
@@ -252,18 +306,20 @@ class HizliMenu extends StatelessWidget {
               );
             },
           );
-        } ,
-        trailing: Icon(Icons.add),
+        },
+        leading: icon,
+        trailing: const FaIcon(FontAwesomeIcons.arrowRight),
         tileColor: color,
         mouseCursor: MouseCursor.uncontrolled,
-        leading: Icon(Icons.add),
         title: Text(
           text1,
-          style: TextStyle(color: Colors.black),
+          style:
+              TextStyle(color: Colors.black, fontSize: context.sHeight * 0.03),
         ),
         subtitle: Text(
           text2,
-          style: TextStyle(color: Colors.black),
+          style:
+              TextStyle(color: Colors.black, fontSize: context.sHeight * 0.02),
         ),
       ),
     );

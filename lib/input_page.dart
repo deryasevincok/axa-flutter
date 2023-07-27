@@ -1,6 +1,5 @@
 import 'package:axa_biz/login_page.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter/rendering.dart';
 import 'dart:math' as math;
 
 class InputPage extends StatefulWidget {
@@ -29,18 +28,21 @@ class _InputPageState extends State<InputPage> {
               child: Container(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     //RotationTransition(turns: AlwaysStoppedAnimation(15/360)), //saat yönünde rotate
                     Transform.rotate(
-                      angle: -math.pi / 4,
+                      angle: -math.pi / 15,
                       child: Text(
                         "AXA",
-                        style: TextStyle(
-                          fontSize: 200.0,
-                          color: Colors.white,
-                        ),
-                      ),
+                        style: Theme.of(context).textTheme.headlineLarge!.merge(
+                              TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.60,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                      ), //TODO EXTENSİON
                     ),
 
                     Padding(
@@ -57,7 +59,12 @@ class _InputPageState extends State<InputPage> {
                           child: Center(
                             child: Text(
                               "Get started",
-                              style: TextStyle(color: Colors.white),
+                              style: Theme.of(context).textTheme.headlineLarge!.merge(
+                                TextStyle(
+                                  color: Colors.white,
+                                  fontSize: MediaQuery.of(context).size.width * 0.05,
+                                ),
+                              ),
                             ),
                           ),
                           decoration: BoxDecoration(
@@ -65,8 +72,6 @@ class _InputPageState extends State<InputPage> {
                             borderRadius: BorderRadius.circular(20.0),
                           ),
                           height: 50.0,
-                          //padding: EdgeInsets.only(bottom: 20.0),
-                          //margin: EdgeInsets.only(top: 10.0),
                         ),
                       ),
                     ),
