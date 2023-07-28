@@ -80,3 +80,11 @@ flutter:
     - family: Playfair
       fonts:
         - asset: fonts/Playfair.ttf
+
+    - family: Lato
+      fonts:
+        - asset: fonts/Lato-Black.ttf
+
+    - family: Jost
+      fonts:
+        - asset: fonts/Jost.ttf

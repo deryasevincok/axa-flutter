@@ -1,6 +1,7 @@
 import 'package:axa_biz/login_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+import 'extension.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -17,13 +18,13 @@ class _InputPageState extends State<InputPage> {
       children: <Widget>[
         Scaffold(
           body: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/galata.jpg"),
                 fit: BoxFit.cover, //ekran dolduruldu .jpg ile
               ),
             ),
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(context.sHeight * 0.03),
             child: SafeArea(
               child: Container(
                 child: Column(
@@ -31,22 +32,20 @@ class _InputPageState extends State<InputPage> {
                   children: <Widget>[
                     //RotationTransition(turns: AlwaysStoppedAnimation(15/360)), //saat yönünde rotate
                     Transform.rotate(
-                      angle: -math.pi / 15,
+                      angle: -math.pi / context.sHeight * 70,
                       child: Text(
                         "AXA",
-                        style: Theme.of(context).textTheme.headlineLarge!.merge(
-                              TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.60,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w800,
-                              ),
-                            ),
-                      ), //TODO EXTENSİON
+                        style: TextStyle(
+                          fontFamily: 'Lato',
+                          fontSize: MediaQuery.of(context).size.width * 0.41,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.all(20.0),
+                      padding: EdgeInsets.all(context.sHeight * 0.03),
                       child: GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -56,22 +55,26 @@ class _InputPageState extends State<InputPage> {
                           );
                         },
                         child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(context.sHeight),
+                          ),
+                          height: context.sWidth * 0.1,
                           child: Center(
                             child: Text(
                               "Get started",
-                              style: Theme.of(context).textTheme.headlineLarge!.merge(
-                                TextStyle(
-                                  color: Colors.white,
-                                  fontSize: MediaQuery.of(context).size.width * 0.05,
-                                ),
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .merge(
+                                    TextStyle(
+                                      color: Colors.white,
+                                      fontSize:
+                                          context.sWidth * 0.05,
+                                    ),
+                                  ),
                             ),
                           ),
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          height: 50.0,
                         ),
                       ),
                     ),

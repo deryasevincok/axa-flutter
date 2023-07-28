@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'extension.dart';
+import 'const.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
-
-  //badge
 
   @override
   Widget build(BuildContext context) {
@@ -25,21 +24,31 @@ class MainPage extends StatelessWidget {
                       children: [
                         Text(
                           "MERHABA",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: context.sWidth * 0.10,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.headlineLarge!.merge(
+                                    TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: context.sWidth * 0.1,
+                                    ),
+                                  ),
                         ),
                         Row(
                           children: [
                             Text(
                               "DERYA",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: context.sWidth * 0.10,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .merge(
+                                    TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: context.sWidth * 0.1,
+                                    ),
+                                  ),
                             ),
-                            FaIcon(
+                            const FaIcon(
                               FontAwesomeIcons.handshakeSimple,
                               color: Colors.lightBlue,
                             ),
@@ -47,8 +56,8 @@ class MainPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const CircleAvatar(
-                      radius: 50.0,
+                    CircleAvatar(
+                      radius: context.sWidth * 0.1,
                       backgroundImage: AssetImage('assets/galata.jpg'),
                     ),
                   ],
@@ -93,19 +102,19 @@ class MainPage extends StatelessWidget {
                               //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 IzinIslemleri(
-                                  Color(0xFFD5EEFD),
+                                  const Color(0xFFD5EEFD),
                                   "Kalan izin",
                                   "12",
                                   const FaIcon(
                                     FontAwesomeIcons.faceSmile,
-                                    color: Colors.blue,
+                                    color: Colors.lightBlue,
                                   ),
                                 ),
                                 IzinIslemleri(
                                   const Color(0xFFFDE4CF),
                                   "Kullanılan",
                                   "10",
-                                  FaIcon(FontAwesomeIcons.faceSadCry,
+                                  const FaIcon(FontAwesomeIcons.faceSadCry,
                                       color: Colors.lightBlue),
                                 ),
                                 IzinIslemleri(
@@ -117,6 +126,7 @@ class MainPage extends StatelessWidget {
                                 ),
                               ],
                             ),
+                            //TODO BADGE KULLAN
                             Container(
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 40.0),
@@ -127,16 +137,19 @@ class MainPage extends StatelessWidget {
                                       child: Text(
                                         "Hızlı Menü",
                                         style: TextStyle(
-                                            color: Colors.black, fontSize: 30.0),
+                                            color: Colors.black,
+                                            fontSize: 30.0),
                                       ),
                                     ),
                                     HizliMenu(
-                                        Color.fromRGBO(241, 192, 232, 0.38),
+                                        const Color.fromRGBO(
+                                            241, 192, 232, 0.38),
                                         "İş seyehatı",
                                         "Seyehatlarınız planlayınız.",
-                                        FaIcon(FontAwesomeIcons.planeDeparture)),
+                                        const FaIcon(
+                                            FontAwesomeIcons.planeDeparture)),
                                     HizliMenu(
-                                        Color(0xFFFDE4CF),
+                                        const Color(0xFFFDE4CF),
                                         "İş masrafları",
                                         "İş işle ilgili masraflarınızı yönetiniz.",
                                         const FaIcon(
@@ -145,7 +158,8 @@ class MainPage extends StatelessWidget {
                                         const Color(0xFFFBECED),
                                         "Sağlık İşlemleri",
                                         "Hastahane faturalarını yönetiniz.",
-                                        FaIcon(FontAwesomeIcons.peopleRobbery)),
+                                        const FaIcon(
+                                            FontAwesomeIcons.peopleRobbery)),
                                   ],
                                 ),
                               ),
@@ -153,43 +167,139 @@ class MainPage extends StatelessWidget {
                             Column(
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.all(context.sHeight * 0.03),
+                                  padding:
+                                      EdgeInsets.all(context.sHeight * 0.03),
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(
                                       "Günün Yemeği",
                                       style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: context.sHeight * 0.03
-                                      ),
+                                          color: Colors.black,
+                                          fontSize: context.sHeight * 0.03),
                                     ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.all(context.sHeight * 0.01),
+                                  padding:
+                                      EdgeInsets.all(context.sHeight * 0.01),
                                   child: Container(
-                                    color: Colors.red,
-                                    child: const Row(
+                                    //margin: EdgeInsets.all(context.sWidth * 0.1),
+                                    decoration: BoxDecoration(
+                                        color: Colors.red,
+                                        borderRadius: BorderRadius.circular(
+                                            context.sWidth * 0.05)),
+                                    child: Row(
                                       children: [
-                                        Column(
-                                          children: [
-                                            //TODO SizedBox değil extension kullanılacak.
-                                            Text("Pazartesi",style: TextStyle(color: Colors.purple),),
-                                            SizedBox(height: 10.0),
-                                            Text("Yayla çorbası"),
-                                            SizedBox(height: 5.0),
-                                            Text("Soslu Tavuk Wrap"),
-                                            SizedBox(height: 5.0),
-                                            Text("Patates kızartması"),
-                                            SizedBox(height: 5.0),
-                                            Text("Salata"),
-                                          ],
+                                        Padding(
+                                          padding: EdgeInsets.all(
+                                              context.sWidth * 0.03),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Pazartesi",
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        context.sWidth * 0.05,
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              ),
+                                              context.emptyWidget(0.02),
+                                              Text(
+                                                "Yayla çorbası",
+                                                style: TextStyle(
+                                                    fontFamily: 'Jost',
+                                                    fontSize:
+                                                        context.sWidth * 0.05),
+                                              ),
+                                              context.emptyWidget(0.001),
+                                              Text(
+                                                "Soslu Tavuk Wrap",
+                                                style: TextStyle(
+                                                    fontFamily: 'Jost',
+                                                    fontSize:
+                                                        context.sWidth * 0.05),
+                                              ),
+                                              context.emptyWidget(0.001),
+                                              Text(
+                                                "Patates kızartması",
+                                                style: TextStyle(
+                                                    fontFamily: 'Jost',
+                                                    fontSize:
+                                                        context.sWidth * 0.05),
+                                              ),
+                                              context.emptyWidget(0.001),
+                                              Text(
+                                                "Salata",
+                                                style: TextStyle(
+                                                    fontFamily: 'Jost',
+                                                    fontSize:
+                                                        context.sWidth * 0.05),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-
+                                        //FaIcon(FontAwesomeIcons.hamburger),
                                       ],
                                     ),
                                   ),
-                                )
+                                ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.all(context.sHeight * 0.01),
+                                  child: Container(
+                                    //margin: EdgeInsets.all(context.sWidth * 0.1),
+                                    decoration: BoxDecoration(
+                                        color: Colors.blue,
+                                        borderRadius: BorderRadius.circular(
+                                            context.sWidth * 0.05)),
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.all(
+                                              context.sWidth * 0.03),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              context.emptyWidget(0.02),
+                                              Text(
+                                                "BİR",
+                                                style: TextStyle(
+                                                    fontFamily: 'Jost',
+                                                    fontSize:
+                                                        context.sWidth * 0.05,
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              ),
+                                              context.emptyWidget(0.001),
+                                              Text(
+                                                "FİKRİM",
+                                                style: TextStyle(
+                                                    fontFamily: 'Jost',
+                                                    fontSize:
+                                                        context.sWidth * 0.05,
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              ),
+                                              context.emptyWidget(0.001),
+                                              Text(
+                                                "VAR ! ",
+                                                style: TextStyle(
+                                                    fontFamily: 'Jost',
+                                                    fontSize:
+                                                        context.sWidth * 0.05,
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ],
@@ -253,13 +363,13 @@ class IzinIslemleri extends StatelessWidget {
             icon,
             Text(
               text1,
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  color: Colors.black, fontWeight: FontWeight.bold),
             ),
             Text(
               text2,
-              style:
-                  const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  color: Colors.black, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -273,6 +383,7 @@ class HizliMenu extends StatelessWidget {
   final String text1;
   final String text2;
   final FaIcon icon;
+
 
   HizliMenu(this.color, this.text1, this.text2, this.icon);
 
@@ -290,18 +401,44 @@ class HizliMenu extends StatelessWidget {
               return Container(
                 height: context.sHeight,
                 color: Colors.amber,
-                child: Center(
+                child: Padding(
+                  padding: EdgeInsets.all(context.sWidth * 0.04),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      const Text('Modal BottomSheet'),
-                      ElevatedButton(
-                        child: const Text('Close BottomSheet'),
-                        onPressed: () => Navigator.pop(context),
-                      ),
+                      if (text1 == "İş seyehatı")  //hızlı menü iş seyehatıysa gerekli maddeleri içine doldur.
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'İş Seyehati giriş',
+                              style: hizliMenuStil,
+                            ),
+                            context.emptyWidget(0.02),
+                            Text(
+                              'İş Seyehati görüntüleme',
+                              style: hizliMenuStil,
+                            ),
+                            context.emptyWidget(0.02),
+                            Badge(
+                              backgroundColor: Colors.amber,
+                              label: Text(
+                                "1",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              child: Text(
+                                'İş Seyehati onaylama',
+                                style: hizliMenuStil,
+                              ),
+                            ),
+                          ],
+                        ),
                     ],
-                  ),
+                  )
                 ),
               );
             },
@@ -311,10 +448,22 @@ class HizliMenu extends StatelessWidget {
         trailing: const FaIcon(FontAwesomeIcons.arrowRight),
         tileColor: color,
         mouseCursor: MouseCursor.uncontrolled,
-        title: Text(
-          text1,
-          style:
-              TextStyle(color: Colors.black, fontSize: context.sHeight * 0.03),
+        title:
+        Badge(
+          backgroundColor: Colors.amber,
+          label: Text(
+            "1",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 15.0,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          child: Text(
+            text1,
+            style:
+                TextStyle(color: Colors.black, fontSize: context.sHeight * 0.03),
+          ),
         ),
         subtitle: Text(
           text2,

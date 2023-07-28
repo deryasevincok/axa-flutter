@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
       children: [
         Scaffold(
           body: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/siyah.jpg"),
                 fit: BoxFit.cover, //ekran dolduruldu .jpg ile
@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.all(5.0),
+                        padding: EdgeInsets.all(context.sHeight * 0.002),
                         child: Container(
                           alignment: AlignmentDirectional.topStart,
                           child: Column(
@@ -43,7 +43,9 @@ class _LoginPageState extends State<LoginPage> {
                                     .headlineLarge!
                                     .merge(
                                       TextStyle(
-                                          fontSize: context.sWidth * 0.17),
+                                        fontSize: context.sWidth * 0.17,
+                                        fontWeight: FontWeight.w800,
+                                      ),
                                     ),
                               ),
                               Text(
@@ -53,7 +55,9 @@ class _LoginPageState extends State<LoginPage> {
                                     .headlineLarge!
                                     .merge(
                                       TextStyle(
-                                          fontSize: context.sWidth * 0.17),
+                                        fontSize: context.sWidth * 0.17,
+                                        fontWeight: FontWeight.w800,
+                                      ),
                                     ),
                               ),
                               Text(
@@ -63,7 +67,9 @@ class _LoginPageState extends State<LoginPage> {
                                     .headlineLarge!
                                     .merge(
                                       TextStyle(
-                                          fontSize: context.sWidth * 0.17),
+                                        fontSize: context.sWidth * 0.17,
+                                        fontWeight: FontWeight.w800,
+                                      ),
                                     ),
                               ),
                               Text(
@@ -73,8 +79,10 @@ class _LoginPageState extends State<LoginPage> {
                                     .headlineLarge!
                                     .merge(
                                       TextStyle(
-                                          fontSize: context.sWidth * 0.10,
-                                          color: Colors.red),
+                                        fontSize: context.sWidth * 0.17,
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.w800,
+                                      ),
                                     ),
                               ),
                             ],
@@ -98,16 +106,15 @@ class _LoginPageState extends State<LoginPage> {
                                         .textTheme
                                         .headlineLarge!
                                         .merge(
-                                          const TextStyle(
-                                              color: Colors.white,
-                                              fontFamily: "Playfair",
-                                              fontSize: 24.0),
+                                          TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: context.sWidth * 0.06,
+                                          ),
                                         ),
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 10.0,
-                                ),
+                                EmptyWidget(context).emptyWidget(0.02),
                                 TextFormField(
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
@@ -117,19 +124,20 @@ class _LoginPageState extends State<LoginPage> {
                                         .headlineLarge!
                                         .merge(
                                           TextStyle(
-                                              color: Colors.white,
-                                              fontFamily: "Playfair",
-                                              fontSize: 24.0),
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: context.sWidth * 0.06,
+                                          ),
                                         ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: EdgeInsets.all(context.sWidth * 0.07),
                         child: GestureDetector(
                           onTap: () {
                             Navigator.push(
@@ -139,22 +147,21 @@ class _LoginPageState extends State<LoginPage> {
                             );
                           },
                           child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius:
+                                  BorderRadius.circular(context.sWidth),
+                            ),
+                            height: context.sWidth * 0.1,
                             child: Center(
                               child: Text(
                                 "LOGIN",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontFamily: 'Oswald',
-                                    fontSize: 20.0),
+                                    fontSize: context.sWidth * 0.06),
                               ),
                             ),
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            height: 50.0,
-                            //padding: EdgeInsets.only(bottom: 20.0),
-                            //margin: EdgeInsets.only(top: 10.0),
                           ),
                         ),
                       ),
