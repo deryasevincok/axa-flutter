@@ -25,148 +25,122 @@ class _LoginPageState extends State<LoginPage> {
             child: SafeArea(
               child: Padding(
                 padding: EdgeInsets.all(context.sWidth * 0.01),
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.all(context.sHeight * 0.002),
-                        child: Container(
-                          alignment: AlignmentDirectional.topStart,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(context.sHeight * 0.002),
+                      child: Container(
+                        alignment: AlignmentDirectional.topStart,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "DERT",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .merge(
+                                    context.loginTextStyle(),
+                                  ),
+                            ),
+                            Text(
+                              "VARSA",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .merge(
+                                  context.loginTextStyle(),
+                                  ),
+                            ),
+                            Text(
+                              "DERMAN",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .merge(
+                                  context.loginTextStyle(),
+                                  ),
+                            ),
+                            Text(
+                              "AXA",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .merge(
+                                  context.logintextStyleRed(),
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        //text form field
+                        Form(
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                "DERT",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineLarge!
-                                    .merge(
-                                      TextStyle(
-                                        fontSize: context.sWidth * 0.17,
-                                        fontWeight: FontWeight.w800,
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  border: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.white),
+                                  ),
+                                  labelText: 'USERNAME',
+                                  labelStyle: Theme.of(context)
+                                      .textTheme
+                                      .headlineLarge!
+                                      .merge(
+                                       context.textFormStyle(),
                                       ),
-                                    ),
+                                ),
                               ),
-                              Text(
-                                "VARSA",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineLarge!
-                                    .merge(
-                                      TextStyle(
-                                        fontSize: context.sWidth * 0.17,
-                                        fontWeight: FontWeight.w800,
+                              EmptyWidget(context).emptyWidget(0.02),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  border: const OutlineInputBorder(),
+                                  labelText: 'PASSWORD',
+                                  labelStyle: Theme.of(context)
+                                      .textTheme
+                                      .headlineLarge!
+                                      .merge(
+                                      context.textFormStyle(),
                                       ),
-                                    ),
-                              ),
-                              Text(
-                                "DERMAN",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineLarge!
-                                    .merge(
-                                      TextStyle(
-                                        fontSize: context.sWidth * 0.17,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ),
-                              ),
-                              Text(
-                                "AXA",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineLarge!
-                                    .merge(
-                                      TextStyle(
-                                        fontSize: context.sWidth * 0.17,
-                                        color: Colors.red,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ),
+                                ),
                               ),
                             ],
                           ),
                         ),
-                      ),
-                      Column(
-                        children: [
-                          //text form field
-                          Form(
-                            child: Column(
-                              children: [
-                                TextFormField(
-                                  decoration: InputDecoration(
-                                    border: const OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white),
-                                    ),
-                                    labelText: 'USERNAME',
-                                    labelStyle: Theme.of(context)
-                                        .textTheme
-                                        .headlineLarge!
-                                        .merge(
-                                          TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: context.sWidth * 0.06,
-                                          ),
-                                        ),
-                                  ),
-                                ),
-                                EmptyWidget(context).emptyWidget(0.02),
-                                TextFormField(
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    labelText: 'PASSWORD',
-                                    labelStyle: Theme.of(context)
-                                        .textTheme
-                                        .headlineLarge!
-                                        .merge(
-                                          TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: context.sWidth * 0.06,
-                                          ),
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(context.sWidth * 0.07),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const MainPage()),
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius:
+                                BorderRadius.circular(context.sWidth),
                           ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(context.sWidth * 0.07),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MainPage()),
-                            );
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius:
-                                  BorderRadius.circular(context.sWidth),
-                            ),
-                            height: context.sWidth * 0.1,
-                            child: Center(
-                              child: Text(
-                                "LOGIN",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Oswald',
-                                    fontSize: context.sWidth * 0.06),
-                              ),
+                          height: context.sWidth * 0.1,
+                          child: Center(
+                            child: Text(
+                              "LOGIN",
+                              style: context.buttonTextStyle(),
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),

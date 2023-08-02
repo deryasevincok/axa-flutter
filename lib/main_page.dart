@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'extension.dart';
-import 'const.dart';
+import 'hizli_menu.dart';
+import 'duyuru.dart';
+import 'izin_islemleri.dart';
+import 'axa_alt_sayfa.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -15,58 +18,51 @@ class MainPage extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "MERHABA",
-                          style:
-                              Theme.of(context).textTheme.headlineLarge!.merge(
-                                    TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: context.sWidth * 0.1,
-                                    ),
-                                  ),
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "DERYA",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineLarge!
-                                  .merge(
-                                    TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: context.sWidth * 0.1,
-                                    ),
-                                  ),
-                            ),
-                            const FaIcon(
-                              FontAwesomeIcons.handshakeSimple,
-                              color: Colors.lightBlue,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    CircleAvatar(
-                      radius: context.sWidth * 0.1,
-                      backgroundImage: AssetImage('assets/galata.jpg'),
-                    ),
-                  ],
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "MERHABA",
+                        style:
+                            Theme.of(context).textTheme.headlineLarge!.merge(
+                                  context.mainTitleStyle(),
+                                ),
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "DERYA",
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineLarge!
+                                .merge(
+                                  context.mainTitleStyle(),
+                                ),
+                          ),
+                          const FaIcon(
+                            FontAwesomeIcons.handshakeSimple,
+                            color: Colors.lightBlue,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  CircleAvatar(
+                    radius: context.sWidth * 0.1,
+                    backgroundImage: const AssetImage('assets/galata.jpg'),
+                  ),
+                ],
               ),
-              const TabBar(
+              TabBar(
+                indicatorColor: Colors.red,
+                indicatorPadding: EdgeInsets.all(context.sWidth * 0.03),
+                indicatorWeight: context.sWidth * 0.02,
                 labelColor: Colors.black,
                 unselectedLabelColor: Colors.grey,
-                tabs: [
+                tabs: const [
                   Tab(
                     text: "Bana Özel",
                   ),
@@ -83,249 +79,217 @@ class MainPage extends StatelessWidget {
                   children: [
                     //bana özele girince yapılacaklar
                     SingleChildScrollView(
-                      child: Container(
-                        child: Column(
-                          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: Text(
-                                "İzin İşlemleri",
-                                style: TextStyle(
-                                    fontSize: context.sWidth * 0.05,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    decoration: TextDecoration.underline),
-                              ),
+                      child: Column(
+                        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: Text(
+                              "İzin İşlemleri",
+                              style: context.izinIslemleriTitleStyle(),
                             ),
-                            Row(
-                              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          ),
+                          Row(
+                            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              IzinIslemleri(
+                                const Color(0xFFD5EEFD),
+                                "Kalan izin",
+                                "12",
+                                const FaIcon(
+                                  FontAwesomeIcons.faceSmile,
+                                  color: Colors.lightBlue,
+                                ),
+                              ),
+                              IzinIslemleri(
+                                const Color(0xFFFDE4CF),
+                                "Kullanılan",
+                                "3",
+                                const FaIcon(FontAwesomeIcons.faceSadCry,
+                                    color: Colors.lightBlue),
+                              ),
+                              IzinIslemleri(
+                                const Color(0xFFF1C0E8),
+                                "Mazaret",
+                                "0",
+                                const FaIcon(FontAwesomeIcons.faceLaugh,
+                                    color: Colors.lightBlue),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: context.sWidth * 0.1),
+                            child: Column(
                               children: [
-                                IzinIslemleri(
-                                  const Color(0xFFD5EEFD),
-                                  "Kalan izin",
-                                  "12",
-                                  const FaIcon(
-                                    FontAwesomeIcons.faceSmile,
-                                    color: Colors.lightBlue,
+                                Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(
+                                    "Hızlı Menü",
+                                    style: context.titleStyle(),
                                   ),
                                 ),
-                                IzinIslemleri(
-                                  const Color(0xFFFDE4CF),
-                                  "Kullanılan",
-                                  "10",
-                                  const FaIcon(FontAwesomeIcons.faceSadCry,
-                                      color: Colors.lightBlue),
-                                ),
-                                IzinIslemleri(
-                                  const Color(0xFFF1C0E8),
-                                  "Mazaret",
-                                  "10",
-                                  const FaIcon(FontAwesomeIcons.faceLaugh,
-                                      color: Colors.lightBlue),
-                                ),
+                                HizliMenu(
+                                    const Color(0xFFF1C0E8),
+                                    "İş seyehatı",
+                                    "Seyehatlarınız planlayınız.",
+                                    const FaIcon(
+                                        FontAwesomeIcons.planeDeparture)),
+                                HizliMenu(
+                                    const Color(0xFFFDE4CF),
+                                    "İş masrafları",
+                                    "İş işle ilgili masraflarınızı yönetiniz.",
+                                    const FaIcon(
+                                        FontAwesomeIcons.moneyCheckDollar)),
+                                HizliMenu(
+                                    const Color(0xFFFBECED),
+                                    "Sağlık İşlemleri",
+                                    "Hastahane faturalarını yönetiniz.",
+                                    const FaIcon(
+                                        FontAwesomeIcons.peopleRobbery)),
                               ],
                             ),
-                            //TODO BADGE KULLAN
-                            Container(
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 40.0),
-                                child: Column(
-                                  children: [
-                                    const Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Text(
-                                        "Hızlı Menü",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 30.0),
+                          ),
+                          context.emptyWidget(0.03),
+                          Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(context.sHeight * 0.01),
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(
+                                    "Günün Yemeği",
+                                    style: context.titleStyle(),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(context.sHeight * 0.01),
+                                child: Container(
+                                  //margin: EdgeInsets.all(context.sWidth * 0.1),
+                                  decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.circular(
+                                          context.sWidth * 0.05)),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(
+                                            context.sWidth * 0.03),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Pazartesi",
+                                              style: context.gununYemegiTitleStyle(),
+                                            ),
+                                            context.emptyWidget(0.02),
+                                            Text(
+                                              "Yayla çorbası",
+                                              style: context.gununYemegiTextStyle(),
+                                            ),
+                                            context.emptyWidget(0.001),
+                                            Text(
+                                              "Soslu Tavuk Wrap",
+                                              style: context.gununYemegiTextStyle(),
+                                            ),
+                                            context.emptyWidget(0.001),
+                                            Text(
+                                              "Patates kızartması",
+                                              style: context.gununYemegiTextStyle(),
+                                            ),
+                                            context.emptyWidget(0.001),
+                                            Text(
+                                              "Salata",
+                                              style: context.gununYemegiTextStyle(),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    HizliMenu(
-                                        const Color.fromRGBO(
-                                            241, 192, 232, 0.38),
-                                        "İş seyehatı",
-                                        "Seyehatlarınız planlayınız.",
-                                        const FaIcon(
-                                            FontAwesomeIcons.planeDeparture)),
-                                    HizliMenu(
-                                        const Color(0xFFFDE4CF),
-                                        "İş masrafları",
-                                        "İş işle ilgili masraflarınızı yönetiniz.",
-                                        const FaIcon(
-                                            FontAwesomeIcons.moneyCheckDollar)),
-                                    HizliMenu(
-                                        const Color(0xFFFBECED),
-                                        "Sağlık İşlemleri",
-                                        "Hastahane faturalarını yönetiniz.",
-                                        const FaIcon(
-                                            FontAwesomeIcons.peopleRobbery)),
-                                  ],
+                                      //FaIcon(FontAwesomeIcons.hamburger),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding:
-                                      EdgeInsets.all(context.sHeight * 0.03),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      "Günün Yemeği",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: context.sHeight * 0.03),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      EdgeInsets.all(context.sHeight * 0.01),
-                                  child: Container(
-                                    //margin: EdgeInsets.all(context.sWidth * 0.1),
-                                    decoration: BoxDecoration(
-                                        color: Colors.red,
-                                        borderRadius: BorderRadius.circular(
-                                            context.sWidth * 0.05)),
-                                    child: Row(
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.all(
-                                              context.sWidth * 0.03),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Pazartesi",
-                                                style: TextStyle(
-                                                    fontSize:
-                                                        context.sWidth * 0.05,
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              ),
-                                              context.emptyWidget(0.02),
-                                              Text(
-                                                "Yayla çorbası",
-                                                style: TextStyle(
-                                                    fontFamily: 'Jost',
-                                                    fontSize:
-                                                        context.sWidth * 0.05),
-                                              ),
-                                              context.emptyWidget(0.001),
-                                              Text(
-                                                "Soslu Tavuk Wrap",
-                                                style: TextStyle(
-                                                    fontFamily: 'Jost',
-                                                    fontSize:
-                                                        context.sWidth * 0.05),
-                                              ),
-                                              context.emptyWidget(0.001),
-                                              Text(
-                                                "Patates kızartması",
-                                                style: TextStyle(
-                                                    fontFamily: 'Jost',
-                                                    fontSize:
-                                                        context.sWidth * 0.05),
-                                              ),
-                                              context.emptyWidget(0.001),
-                                              Text(
-                                                "Salata",
-                                                style: TextStyle(
-                                                    fontFamily: 'Jost',
-                                                    fontSize:
-                                                        context.sWidth * 0.05),
-                                              ),
-                                            ],
-                                          ),
+                              Padding(
+                                padding: EdgeInsets.all(context.sHeight * 0.01),
+                                child: Container(
+                                  //margin: EdgeInsets.all(context.sWidth * 0.1),
+                                  decoration: BoxDecoration(
+                                      color: Colors.blue,
+                                      borderRadius: BorderRadius.circular(
+                                          context.sWidth * 0.05)),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(
+                                            context.sWidth * 0.03),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            context.emptyWidget(0.02),
+                                            Text(
+                                              "BİR",
+                                              style: context.gununYemegiTitleStyle(),
+                                            ),
+                                            context.emptyWidget(0.001),
+                                            Text(
+                                              "FİKRİM",
+                                              style: context.gununYemegiTextStyle(),
+                                            ),
+                                            context.emptyWidget(0.001),
+                                            Text(
+                                              "VAR ! ",
+                                              style: context.gununYemegiTextStyle(),
+                                            ),
+                                          ],
                                         ),
-                                        //FaIcon(FontAwesomeIcons.hamburger),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                Padding(
-                                  padding:
-                                      EdgeInsets.all(context.sHeight * 0.01),
-                                  child: Container(
-                                    //margin: EdgeInsets.all(context.sWidth * 0.1),
-                                    decoration: BoxDecoration(
-                                        color: Colors.blue,
-                                        borderRadius: BorderRadius.circular(
-                                            context.sWidth * 0.05)),
-                                    child: Row(
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.all(
-                                              context.sWidth * 0.03),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              context.emptyWidget(0.02),
-                                              Text(
-                                                "BİR",
-                                                style: TextStyle(
-                                                    fontFamily: 'Jost',
-                                                    fontSize:
-                                                        context.sWidth * 0.05,
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              ),
-                                              context.emptyWidget(0.001),
-                                              Text(
-                                                "FİKRİM",
-                                                style: TextStyle(
-                                                    fontFamily: 'Jost',
-                                                    fontSize:
-                                                        context.sWidth * 0.05,
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              ),
-                                              context.emptyWidget(0.001),
-                                              Text(
-                                                "VAR ! ",
-                                                style: TextStyle(
-                                                    fontFamily: 'Jost',
-                                                    fontSize:
-                                                        context.sWidth * 0.05,
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    Column(
+                      children: [
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              Duyuru(),
+                              Duyuru(),
+                            ],
+                          ),
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            AxaAltSayfa(Color(0xFFCCD5AE), "Axa'da Hayat"),
+                            AxaAltSayfa(Color(0xFFE9EDC9), "İş sürekliliği"),
+                            AxaAltSayfa(
+                                Color(0xFFFEFAE0), "Başarı prensipleri"),
                           ],
                         ),
-                      ),
-                    ),
+                        context.emptyWidget(0.02),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            AxaAltSayfa(Color(0xFFFAEDCD), "Taahütler"),
+                            AxaAltSayfa(
+                                Color(0xFFD4A373), "Sadelik manifestosu"),
+                            AxaAltSayfa(Color(0xFFD4A373), "Poliçeme "),
+                          ],
+                        )
+                      ],
+                    )
 
                     //axada hayata girince yapılacaklar
-                    const Center(
-                      child: Text(
-                        "Axa'da Hayat",
-                        style: TextStyle(
-                          color: Colors.purple,
-                        ),
-                      ),
-                    ),
-
-                    //uygulamalara girince yapılacaklar
-                    const Center(
-                      child: Text(
-                        "Uygulamalar",
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -337,140 +301,4 @@ class MainPage extends StatelessWidget {
   }
 }
 
-class IzinIslemleri extends StatelessWidget {
-  final Color color;
-  final String text1;
-  final String text2;
-  final FaIcon icon;
 
-  IzinIslemleri(this.color, this.text1, this.text2, this.icon);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(
-            context.sWidth * 0.02,
-          ), // Set the border radius
-        ),
-        margin: EdgeInsetsDirectional.all(
-          context.sWidth * 0.04,
-        ),
-        child: Column(
-          children: [
-            icon,
-            Text(
-              text1,
-              style: const TextStyle(
-                  color: Colors.black, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              text2,
-              style: const TextStyle(
-                  color: Colors.black, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class HizliMenu extends StatelessWidget {
-  final Color color;
-  final String text1;
-  final String text2;
-  final FaIcon icon;
-
-
-  HizliMenu(this.color, this.text1, this.text2, this.icon);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(
-        context.sWidth * 0.02,
-      ),
-      child: ListTile(
-        onTap: () {
-          showModalBottomSheet<void>(
-            context: context,
-            builder: (BuildContext context) {
-              return Container(
-                height: context.sHeight,
-                color: Colors.amber,
-                child: Padding(
-                  padding: EdgeInsets.all(context.sWidth * 0.04),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      if (text1 == "İş seyehatı")  //hızlı menü iş seyehatıysa gerekli maddeleri içine doldur.
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'İş Seyehati giriş',
-                              style: hizliMenuStil,
-                            ),
-                            context.emptyWidget(0.02),
-                            Text(
-                              'İş Seyehati görüntüleme',
-                              style: hizliMenuStil,
-                            ),
-                            context.emptyWidget(0.02),
-                            Badge(
-                              backgroundColor: Colors.amber,
-                              label: Text(
-                                "1",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              child: Text(
-                                'İş Seyehati onaylama',
-                                style: hizliMenuStil,
-                              ),
-                            ),
-                          ],
-                        ),
-                    ],
-                  )
-                ),
-              );
-            },
-          );
-        },
-        leading: icon,
-        trailing: const FaIcon(FontAwesomeIcons.arrowRight),
-        tileColor: color,
-        mouseCursor: MouseCursor.uncontrolled,
-        title:
-        Badge(
-          backgroundColor: Colors.amber,
-          label: Text(
-            "1",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 15.0,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          child: Text(
-            text1,
-            style:
-                TextStyle(color: Colors.black, fontSize: context.sHeight * 0.03),
-          ),
-        ),
-        subtitle: Text(
-          text2,
-          style:
-              TextStyle(color: Colors.black, fontSize: context.sHeight * 0.02),
-        ),
-      ),
-    );
-  }
-}
