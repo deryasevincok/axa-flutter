@@ -10,7 +10,7 @@ class Duyuru extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(context.sWidth * 0.04),
-      width: context.sWidth,
+      width: context.sWidth * 0.92,
       child: Column(
         children: [
           Container(

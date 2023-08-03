@@ -5,9 +5,12 @@ import 'hizli_menu.dart';
 import 'duyuru.dart';
 import 'izin_islemleri.dart';
 import 'axa_alt_sayfa.dart';
+import 'package:flutter_emoji/flutter_emoji.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,15 +29,14 @@ class MainPage extends StatelessWidget {
                     children: [
                       Text(
                         "MERHABA",
-                        style:
-                            Theme.of(context).textTheme.headlineLarge!.merge(
-                                  context.mainTitleStyle(),
-                                ),
+                        style: Theme.of(context).textTheme.headlineLarge!.merge(
+                              context.mainTitleStyle(),
+                            ),
                       ),
                       Row(
                         children: [
                           Text(
-                            "DERYA",
+                            "DERYA👋",
                             style: Theme.of(context)
                                 .textTheme
                                 .headlineLarge!
@@ -42,10 +44,10 @@ class MainPage extends StatelessWidget {
                                   context.mainTitleStyle(),
                                 ),
                           ),
-                          const FaIcon(
+                          /*const FaIcon(
                             FontAwesomeIcons.handshakeSimple,
                             color: Colors.lightBlue,
-                          ),
+                          ),*/
                         ],
                       ),
                     ],
@@ -85,35 +87,30 @@ class MainPage extends StatelessWidget {
                           Align(
                             alignment: Alignment.topRight,
                             child: Text(
+                              //TODO İZİN İŞLEMLERİ KISMI KAYDIRILABİLİR OLMALI
                               "İzin İşlemleri",
                               style: context.izinIslemleriTitleStyle(),
                             ),
                           ),
                           Row(
-                            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               IzinIslemleri(
                                 const Color(0xFFD5EEFD),
                                 "Kalan izin",
                                 "12",
-                                const FaIcon(
-                                  FontAwesomeIcons.faceSmile,
-                                  color: Colors.lightBlue,
-                                ),
+                                "😃",
                               ),
                               IzinIslemleri(
                                 const Color(0xFFFDE4CF),
                                 "Kullanılan",
                                 "3",
-                                const FaIcon(FontAwesomeIcons.faceSadCry,
-                                    color: Colors.lightBlue),
+                                "🥲",
                               ),
                               IzinIslemleri(
                                 const Color(0xFFF1C0E8),
                                 "Mazaret",
-                                "0",
-                                const FaIcon(FontAwesomeIcons.faceLaugh,
-                                    color: Colors.lightBlue),
+                                "",
+                                "",
                               ),
                             ],
                           ),
@@ -128,24 +125,23 @@ class MainPage extends StatelessWidget {
                                     style: context.titleStyle(),
                                   ),
                                 ),
+                                //TODO SADECE İŞ SEYEHATİNİN ÜSTÜNDE SAYI OLMALI
                                 HizliMenu(
                                     const Color(0xFFF1C0E8),
                                     "İş seyehatı",
                                     "Seyehatlarınız planlayınız.",
-                                    const FaIcon(
-                                        FontAwesomeIcons.planeDeparture)),
+                                    "🛫"),
                                 HizliMenu(
-                                    const Color(0xFFFDE4CF),
-                                    "İş masrafları",
-                                    "İş işle ilgili masraflarınızı yönetiniz.",
-                                    const FaIcon(
-                                        FontAwesomeIcons.moneyCheckDollar)),
+                                  const Color(0xFFFDE4CF),
+                                  "İş masrafları",
+                                  "İş işle ilgili masraflarınızı yönetiniz.",
+                                  "💸",
+                                ),
                                 HizliMenu(
                                     const Color(0xFFFBECED),
                                     "Sağlık İşlemleri",
                                     "Hastahane faturalarını yönetiniz.",
-                                    const FaIcon(
-                                        FontAwesomeIcons.peopleRobbery)),
+                                    "🧑‍⚕"),
                               ],
                             ),
                           ),
@@ -171,6 +167,7 @@ class MainPage extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(
                                           context.sWidth * 0.05)),
                                   child: Row(
+                                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Padding(
                                         padding: EdgeInsets.all(
@@ -181,30 +178,39 @@ class MainPage extends StatelessWidget {
                                           children: [
                                             Text(
                                               "Pazartesi",
-                                              style: context.gununYemegiTitleStyle(),
+                                              style: context
+                                                  .gununYemegiTitleStyle(),
                                             ),
                                             context.emptyWidget(0.02),
                                             Text(
                                               "Yayla çorbası",
-                                              style: context.gununYemegiTextStyle(),
+                                              style: context
+                                                  .gununYemegiTextStyle(),
                                             ),
                                             context.emptyWidget(0.001),
                                             Text(
                                               "Soslu Tavuk Wrap",
-                                              style: context.gununYemegiTextStyle(),
+                                              style: context
+                                                  .gununYemegiTextStyle(),
                                             ),
                                             context.emptyWidget(0.001),
                                             Text(
                                               "Patates kızartması",
-                                              style: context.gununYemegiTextStyle(),
+                                              style: context
+                                                  .gununYemegiTextStyle(),
                                             ),
                                             context.emptyWidget(0.001),
                                             Text(
                                               "Salata",
-                                              style: context.gununYemegiTextStyle(),
+                                              style: context
+                                                  .gununYemegiTextStyle(),
                                             ),
                                           ],
                                         ),
+                                      ),
+                                      Text(
+                                        "🍔",
+                                        style: context.hamburgerStyle(),
                                       ),
                                       //FaIcon(FontAwesomeIcons.hamburger),
                                     ],
@@ -219,34 +225,41 @@ class MainPage extends StatelessWidget {
                                       color: Colors.blue,
                                       borderRadius: BorderRadius.circular(
                                           context.sWidth * 0.05)),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(
-                                            context.sWidth * 0.03),
-                                        child: Column(
+                                  child: Padding(
+                                    padding: EdgeInsets.all(context.sHeight * 0.035),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
                                             context.emptyWidget(0.02),
                                             Text(
                                               "BİR",
-                                              style: context.gununYemegiTitleStyle(),
+                                              style: context
+                                                  .fikrimVarTextStyle(),
                                             ),
                                             context.emptyWidget(0.001),
                                             Text(
                                               "FİKRİM",
-                                              style: context.gununYemegiTextStyle(),
+                                              style: context
+                                                  .fikrimVarTextStyle(),
                                             ),
                                             context.emptyWidget(0.001),
                                             Text(
                                               "VAR ! ",
-                                              style: context.gununYemegiTextStyle(),
+                                              style: context
+                                                  .fikrimVarTextStyle(),
                                             ),
                                           ],
                                         ),
-                                      ),
-                                    ],
+                                        Text(
+                                          "🎯",
+                                          style: context.hamburgerStyle(),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -262,6 +275,7 @@ class MainPage extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children: [
+                              //TODO BOYUT KÜÇÜLSÜN
                               Duyuru(),
                               Duyuru(),
                             ],
@@ -287,8 +301,7 @@ class MainPage extends StatelessWidget {
                           ],
                         )
                       ],
-                    )
-
+                    ),
                     //axada hayata girince yapılacaklar
                   ],
                 ),
@@ -300,5 +313,3 @@ class MainPage extends StatelessWidget {
     );
   }
 }
-
-

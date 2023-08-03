@@ -39,7 +39,8 @@ class _InputPageState extends State<InputPage> {
                   ),
 
                   Padding(
-                    padding: EdgeInsets.all(context.sHeight * 0.03),
+                  //padding: EdgeInsets.symmetric(horizontal: context.sHeight * 0.02,vertical: context.sHeight * 0.05),
+                    padding: EdgeInsets.only(left: context.sHeight * 0.01,right: context.sHeight * 0.01,bottom: context.sHeight * 0.03 ),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -53,7 +54,7 @@ class _InputPageState extends State<InputPage> {
                           color: Colors.red,
                           borderRadius: BorderRadius.circular(context.sHeight),
                         ),
-                        height: context.sWidth * 0.1,
+                        height: context.sHeight * 0.08,
                         child: Center(
                           child: Text(
                             "Get started",

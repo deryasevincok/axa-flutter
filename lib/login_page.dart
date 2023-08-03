@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                                   .textTheme
                                   .headlineLarge!
                                   .merge(
-                                  context.loginTextStyle(),
+                                    context.loginTextStyle(),
                                   ),
                             ),
                             Text(
@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                                   .textTheme
                                   .headlineLarge!
                                   .merge(
-                                  context.loginTextStyle(),
+                                    context.loginTextStyle(),
                                   ),
                             ),
                             Text(
@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                                   .textTheme
                                   .headlineLarge!
                                   .merge(
-                                  context.logintextStyleRed(),
+                                    context.logintextStyleRed(),
                                   ),
                             ),
                           ],
@@ -79,43 +79,59 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         //text form field
                         Form(
-                          child: Column(
-                            children: [
-                              TextFormField(
-                                decoration: InputDecoration(
-                                  border: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white),
+                          child: Padding(
+                            padding:  EdgeInsets.all(context.sHeight * 0.03),
+                            child: Column(
+                              children: [
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                    enabledBorder: const UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.white),
+                                    ),
+                                    focusedBorder: const UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.white,
+                                      ), // Optional: Set the focused border color if needed
+                                    ),
+                                    labelText: 'USERNAME',
+                                    labelStyle: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .merge(
+                                          context.textFormStyle(),
+                                        ),
                                   ),
-                                  labelText: 'USERNAME',
-                                  labelStyle: Theme.of(context)
-                                      .textTheme
-                                      .headlineLarge!
-                                      .merge(
-                                       context.textFormStyle(),
-                                      ),
                                 ),
-                              ),
-                              EmptyWidget(context).emptyWidget(0.02),
-                              TextFormField(
-                                decoration: InputDecoration(
-                                  border: const OutlineInputBorder(),
-                                  labelText: 'PASSWORD',
-                                  labelStyle: Theme.of(context)
-                                      .textTheme
-                                      .headlineLarge!
-                                      .merge(
-                                      context.textFormStyle(),
-                                      ),
+                                EmptyWidget(context).emptyWidget(0.02),
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                    enabledBorder: const UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.white),
+                                    ),
+                                    focusedBorder: const UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.white,
+                                      ), // Optional: Set the focused border color if needed
+                                    ),
+                                    labelText: 'PASSWORD',
+                                    labelStyle: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .merge(
+                                          context.textFormStyle(),
+                                        ),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsets.all(context.sWidth * 0.07),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: context.sHeight * 0.02,
+                          vertical: context.sHeight * 0.04),
                       child: GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -127,10 +143,9 @@ class _LoginPageState extends State<LoginPage> {
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.red,
-                            borderRadius:
-                                BorderRadius.circular(context.sWidth),
+                            borderRadius: BorderRadius.circular(context.sWidth),
                           ),
-                          height: context.sWidth * 0.1,
+                          height: context.sHeight * 0.07,
                           child: Center(
                             child: Text(
                               "LOGIN",

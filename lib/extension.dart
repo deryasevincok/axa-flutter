@@ -18,19 +18,19 @@ extension EmptyWidget on BuildContext {
 
 extension TextStyle1 on BuildContext {
   TextStyle getStartedTitleStyle() => TextStyle(
-    fontFamily: 'Lato',
-    fontSize: sWidth * 0.4,
-    color: Colors.white,
-    fontWeight: FontWeight.w800,
-  );
+        fontFamily: 'Lato',
+        fontSize: sWidth * 0.4,
+        color: Colors.white,
+        fontWeight: FontWeight.w800,
+      );
 
   TextStyle loginTextStyle() => TextStyle(
-        fontSize: sWidth * 0.17,
+        fontSize: sWidth * 0.14,
         fontWeight: FontWeight.w800,
       );
 
   TextStyle logintextStyleRed() => TextStyle(
-      fontSize: sWidth * 0.17, fontWeight: FontWeight.w800, color: Colors.red);
+      fontSize: sWidth * 0.14, fontWeight: FontWeight.w800, color: Colors.red);
 
   TextStyle buttonTextStyle() => TextStyle(
       color: Colors.white, fontFamily: 'Playfair', fontSize: sWidth * 0.06);
@@ -48,15 +48,20 @@ extension TextStyle1 on BuildContext {
       );
 
   TextStyle hizliMenuStyle() => TextStyle(
-    fontSize: sWidth * 0.06,
-    fontWeight: FontWeight.bold,
-    fontFamily: 'Jost',
-    color: Colors.black,
-  );
+        fontSize: sWidth * 0.06,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'Jost',
+        color: Colors.black,
+      );
 
   TextStyle hizliMenuTitleStyle() => TextStyle(
         color: Colors.black,
         fontSize: sHeight * 0.03,
+      );
+
+  TextStyle emojiStyle() => TextStyle(
+        color: Colors.black,
+        fontSize: sHeight * 0.05,
       );
 
   TextStyle hizliMenuSubtitleStyle() => TextStyle(
@@ -76,30 +81,24 @@ extension TextStyle1 on BuildContext {
       fontWeight: FontWeight.bold,
       decoration: TextDecoration.underline);
 
-  TextStyle izinIslemleriTextStyle() =>TextStyle(
+  TextStyle izinIslemleriTextStyle() => TextStyle(
         fontSize: sWidth * 0.05,
         color: Colors.black,
         fontWeight: FontWeight.bold,
       );
 
-  TextStyle titleStyle() =>TextStyle(
-    color: Colors.black,
-    fontSize: sWidth * 0.07,
-    fontFamily: 'Jost'
-  );
+  TextStyle titleStyle() => TextStyle(
+      color: Colors.black, fontSize: sWidth * 0.07, fontFamily: 'Jost');
 
-  TextStyle gununYemegiTitleStyle() =>TextStyle(
-      fontSize: sWidth * 0.05,
-      fontWeight: FontWeight.w700,
-      fontFamily: 'Jost'
-  );
+  TextStyle gununYemegiTitleStyle() => TextStyle(
+      fontSize: sWidth * 0.05, fontWeight: FontWeight.w700, fontFamily: 'Jost');
 
-  TextStyle gununYemegiTextStyle() =>TextStyle(
-      fontSize: sWidth * 0.05,
-      fontFamily: 'Jost'
-  );
+  TextStyle gununYemegiTextStyle() =>
+      TextStyle(fontSize: sWidth * 0.05, fontFamily: 'Jost');
 
+  TextStyle hamburgerStyle() =>
+      TextStyle(fontSize: sHeight * 0.20);
 
-
-
+  TextStyle fikrimVarTextStyle() => TextStyle(
+      fontSize: sWidth * 0.06, fontFamily: 'Jost', fontWeight: FontWeight.w700);
 }
