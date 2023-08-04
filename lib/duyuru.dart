@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'extension.dart';
 
-
 class Duyuru extends StatelessWidget {
 
 
@@ -20,7 +19,6 @@ class Duyuru extends StatelessWidget {
                 context.sWidth * 0.02,
               ), // Set the border radius
             ),
-
             child: Column(
               children: [
                 Container(
@@ -31,16 +29,11 @@ class Duyuru extends StatelessWidget {
                     children: [
                       Text(
                         "Doğum günün",
-                        style: TextStyle(
-                            fontSize: context.sWidth * 0.08,
-                            color: Colors.black,fontFamily: 'Jost',
-                            fontWeight: FontWeight.w500),
+                        style: context.duyuruStyle(),
                       ),
                       Text(
                         "Kutlu olsun",
-                        style: TextStyle(
-                            fontSize: context.sWidth * 0.08,
-                            color: Colors.black,fontFamily: 'Jost',fontWeight: FontWeight.w500),
+                        style: context.duyuruStyle(),
                       ),
                     ],
                   ),
@@ -49,20 +42,21 @@ class Duyuru extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: context.sWidth * 0.08,
-                      backgroundImage:
-                      AssetImage('assets/galata.jpg'),
+                      backgroundImage: AssetImage('assets/galata.jpg'),
                     ),
                     Padding(
                       padding: EdgeInsets.all(context.sWidth * 0.02),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Derya",style: TextStyle(fontSize: context.sWidth * 0.06,
-                              color: Colors.black,fontFamily: 'Jost',
-                              fontWeight: FontWeight.w500),),
-                          Text("Sevinçok",style: TextStyle(fontSize: context.sWidth * 0.06,
-                              color: Colors.black,fontFamily: 'Jost',
-                              fontWeight: FontWeight.w500),),
+                          Text(
+                            "Derya",
+                            style: context.duyuruIsimStyle(),
+                          ),
+                          Text(
+                            "Sevinçok",
+                            style: context.duyuruIsimStyle(),
+                          ),
                         ],
                       ),
                     )

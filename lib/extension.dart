@@ -101,4 +101,15 @@ extension TextStyle1 on BuildContext {
 
   TextStyle fikrimVarTextStyle() => TextStyle(
       fontSize: sWidth * 0.06, fontFamily: 'Jost', fontWeight: FontWeight.w700);
+
+  TextStyle duyuruIsimStyle() => TextStyle(
+      fontSize: sWidth * 0.06,
+      color: Colors.black,fontFamily: 'Jost',
+      fontWeight: FontWeight.w500);
+
+  TextStyle duyuruStyle() => TextStyle(
+      fontSize: sWidth * 0.08,
+      color: Colors.black,
+      fontFamily: 'Jost',
+      fontWeight: FontWeight.w500);
 }

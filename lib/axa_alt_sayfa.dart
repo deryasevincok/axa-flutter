@@ -4,24 +4,21 @@ import 'extension.dart';
 class AxaAltSayfa extends StatelessWidget {
   final Color color;
   final String text;
+  final String emoji;
 
-  const AxaAltSayfa(this.color, this.text);
-
-
+  const AxaAltSayfa(this.color, this.text, this.emoji);
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topRight,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(
-              context.sWidth * 0.03,
-            ), // Set the border radius
-          ),
-          child: Padding(
+    return Container(
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(context.sWidth * 0.03),
+      ),
+      child: Stack(
+        alignment: Alignment.topRight,
+        children: [
+          Padding(
             padding: EdgeInsets.all(context.sWidth * 0.05),
             child: Text(
               text,
@@ -30,19 +27,19 @@ class AxaAltSayfa extends StatelessWidget {
               ),
             ),
           ),
-        ),
-        const Positioned(
-          top: -12, // Ayarlayarak metni dikey yönde taşıyabilirsiniz
-          right: -12, // Ayarlayarak metni yatay yönde taşıyabilirsiniz
-          child: Text(
-            '🏆', // Sağ üstte görünecek ekstra metin
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 25.0, // İstediğiniz büyüklükte ayarlayabilirsiniz
+          Positioned(
+            top: -context.sWidth * 0.03, // Adjust the top position to make it slightly overflow
+            right: -context.sWidth * 0.03, // Adjust the right position to make it slightly overflow
+            child: Text(
+              emoji,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 30.0,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

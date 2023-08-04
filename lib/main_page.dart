@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'extension.dart';
 import 'hizli_menu.dart';
 import 'duyuru.dart';
 import 'izin_islemleri.dart';
 import 'axa_alt_sayfa.dart';
-import 'package:flutter_emoji/flutter_emoji.dart';
+
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +41,6 @@ class MainPage extends StatelessWidget {
                                   context.mainTitleStyle(),
                                 ),
                           ),
-                          /*const FaIcon(
-                            FontAwesomeIcons.handshakeSimple,
-                            color: Colors.lightBlue,
-                          ),*/
                         ],
                       ),
                     ],
@@ -87,7 +80,6 @@ class MainPage extends StatelessWidget {
                           Align(
                             alignment: Alignment.topRight,
                             child: Text(
-                              //TODO İZİN İŞLEMLERİ KISMI KAYDIRILABİLİR OLMALI
                               "İzin İşlemleri",
                               style: context.izinIslemleriTitleStyle(),
                             ),
@@ -112,10 +104,13 @@ class MainPage extends StatelessWidget {
                                 "",
                                 "",
                               ),
+
                             ],
                           ),
+                          //TODO BEYAZ EKRANI DÜZELT
                           Padding(
-                            padding: EdgeInsets.only(top: context.sWidth * 0.1),
+                            padding: EdgeInsets.only(
+                                top: context.sWidth * 0.1),
                             child: Column(
                               children: [
                                 Align(
@@ -125,23 +120,25 @@ class MainPage extends StatelessWidget {
                                     style: context.titleStyle(),
                                   ),
                                 ),
-                                //TODO SADECE İŞ SEYEHATİNİN ÜSTÜNDE SAYI OLMALI
                                 HizliMenu(
-                                    const Color(0xFFF1C0E8),
+                                    Color(0xFFF1C0E8),
                                     "İş seyehatı",
                                     "Seyehatlarınız planlayınız.",
                                     "🛫"),
                                 HizliMenu(
-                                  const Color(0xFFFDE4CF),
+                                  Color(0xFFFDE4CF),
                                   "İş masrafları",
                                   "İş işle ilgili masraflarınızı yönetiniz.",
                                   "💸",
                                 ),
                                 HizliMenu(
-                                    const Color(0xFFFBECED),
+                                    Color(0xFFFBECED),
                                     "Sağlık İşlemleri",
                                     "Hastahane faturalarını yönetiniz.",
-                                    "🧑‍⚕"),
+                                    "🧑‍⚕")
+                                /*Container(color: Colors.red,width: 100.0,),
+                                Container(color: Colors.red,),
+                                Container(color: Colors.red,)*/
                               ],
                             ),
                           ),
@@ -226,9 +223,11 @@ class MainPage extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(
                                           context.sWidth * 0.05)),
                                   child: Padding(
-                                    padding: EdgeInsets.all(context.sHeight * 0.035),
+                                    padding:
+                                        EdgeInsets.all(context.sHeight * 0.035),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Column(
                                           crossAxisAlignment:
@@ -237,20 +236,20 @@ class MainPage extends StatelessWidget {
                                             context.emptyWidget(0.02),
                                             Text(
                                               "BİR",
-                                              style: context
-                                                  .fikrimVarTextStyle(),
+                                              style:
+                                                  context.fikrimVarTextStyle(),
                                             ),
                                             context.emptyWidget(0.001),
                                             Text(
                                               "FİKRİM",
-                                              style: context
-                                                  .fikrimVarTextStyle(),
+                                              style:
+                                                  context.fikrimVarTextStyle(),
                                             ),
                                             context.emptyWidget(0.001),
                                             Text(
                                               "VAR ! ",
-                                              style: context
-                                                  .fikrimVarTextStyle(),
+                                              style:
+                                                  context.fikrimVarTextStyle(),
                                             ),
                                           ],
                                         ),
@@ -275,7 +274,7 @@ class MainPage extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children: [
-                              //TODO BOYUT KÜÇÜLSÜN
+                              Duyuru(),
                               Duyuru(),
                               Duyuru(),
                             ],
@@ -284,24 +283,26 @@ class MainPage extends StatelessWidget {
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            AxaAltSayfa(Color(0xFFCCD5AE), "Axa'da Hayat"),
-                            AxaAltSayfa(Color(0xFFE9EDC9), "İş sürekliliği"),
+                            AxaAltSayfa(Color(0xFFCCD5AE), "Axa'da Hayat","🏆"),
+                            AxaAltSayfa(Color(0xFFE9EDC9), "İş sürekliliği","🧑‍💻"),
                             AxaAltSayfa(
-                                Color(0xFFFEFAE0), "Başarı prensipleri"),
+                                Color(0xFFFEFAE0), "Başarı prensipleri","🎖️"),
                           ],
                         ),
                         context.emptyWidget(0.02),
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            AxaAltSayfa(Color(0xFFFAEDCD), "Taahütler"),
+                            AxaAltSayfa(Color(0xFFFAEDCD), "Taahütler","✍️"),
                             AxaAltSayfa(
-                                Color(0xFFD4A373), "Sadelik manifestosu"),
-                            AxaAltSayfa(Color(0xFFD4A373), "Poliçeme "),
+                                Color(0xFFD4A373), "Sadelik manifestosu","🎨"),
+                            AxaAltSayfa(Color(0xFFD4A373), "Poliçeme ","🎫"),
                           ],
                         )
                       ],
                     ),
+
+
                     //axada hayata girince yapılacaklar
                   ],
                 ),
