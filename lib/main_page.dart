@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'extension.dart';
-import 'hizli_menu.dart';
+//import 'hizli_menu.dart';
 import 'duyuru.dart';
 import 'izin_islemleri.dart';
 import 'axa_alt_sayfa.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -104,13 +104,12 @@ class MainPage extends StatelessWidget {
                                 "",
                                 "",
                               ),
-
                             ],
                           ),
-                          //TODO BEYAZ EKRANI DÜZELT
+                          //TODO BEYAZ EKRAN
+
                           Padding(
-                            padding: EdgeInsets.only(
-                                top: context.sWidth * 0.1),
+                            padding: EdgeInsets.only(top: context.sWidth * 0.1),
                             child: Column(
                               children: [
                                 Align(
@@ -120,25 +119,352 @@ class MainPage extends StatelessWidget {
                                     style: context.titleStyle(),
                                   ),
                                 ),
-                                HizliMenu(
-                                    Color(0xFFF1C0E8),
-                                    "İş seyehatı",
-                                    "Seyehatlarınız planlayınız.",
-                                    "🛫"),
-                                HizliMenu(
-                                  Color(0xFFFDE4CF),
-                                  "İş masrafları",
-                                  "İş işle ilgili masraflarınızı yönetiniz.",
-                                  "💸",
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: [
+                                      Column(
+                                        children: [
+                                         SizedBox(
+                                            //color: Colors.red,
+                                            width: context.sWidth * 0.95,
+                                            height: context.sHeight * 0.15,
+                                            child:Padding(
+                                              padding: EdgeInsets.all(
+                                                context.sWidth * 0.03,
+                                              ),
+                                              child: Badge(
+                                                backgroundColor: Colors.red,
+                                                label: Text(
+                                                  "1",
+                                                  style: context.badgeStyle(),
+                                                ),
+                                                child: ListTile(
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(
+                                                        context.sWidth * 0.05),
+                                                  ),
+                                                  onTap: () {
+                                                    showModalBottomSheet<void>(
+                                                      context: context,
+                                                      builder: (BuildContext context) {
+                                                        return Container(
+                                                          height: context.sHeight,
+                                                          color: const Color(0xFFFAEDCD),
+                                                          child: Padding(
+                                                            padding: EdgeInsets.all(
+                                                                context.sWidth * 0.04),
+                                                            child: Column(
+                                                              crossAxisAlignment:
+                                                              CrossAxisAlignment.start,
+                                                              children: <Widget>[
+                                                                //hızlı menü iş seyehatıysa gerekli maddeleri içine doldur.
+                                                                Column(
+                                                                  crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                                  children: <Widget>[
+                                                                    Text(
+                                                                      'İş Seyehati giriş',
+                                                                      style: context
+                                                                          .hizliMenuStyle(),
+                                                                    ),
+                                                                    context
+                                                                        .emptyWidget(0.02),
+                                                                    Text(
+                                                                      'İş Seyehati görüntüleme',
+                                                                      style: context
+                                                                          .hizliMenuStyle(),
+                                                                    ),
+                                                                    context
+                                                                        .emptyWidget(0.02),
+                                                                    Badge(
+                                                                      backgroundColor:
+                                                                      const Color(
+                                                                          0xFFFAEDCD),
+                                                                      label: Text(
+                                                                        "1",
+                                                                        style: context
+                                                                            .badgeStyle(),
+                                                                      ),
+                                                                      child: Text(
+                                                                        'İş Seyehati onaylama',
+                                                                        style: context
+                                                                            .hizliMenuStyle(),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                  },
+                                                  leading: Text(
+                                                    "🛫",
+                                                    style: context.emojiStyle(),
+                                                  ),
+                                                  trailing: const FaIcon(
+                                                      FontAwesomeIcons.arrowRight),
+                                                  tileColor: const Color(0xF1C0E861),
+                                                  mouseCursor: MouseCursor.uncontrolled,
+                                                  title: Text(
+                                                    "İş seyehatı",
+                                                    style: context.hizliMenuTitleStyle(),
+                                                  ),
+                                                  subtitle: Text(
+                                                    "Seyehatlarınızı planlayınız",
+                                                    style: context.hizliMenuSubtitleStyle(),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            //color: Colors.orange,
+                                            width: context.sWidth * 0.95,
+                                            height: context.sHeight * 0.15,
+                                            child: Padding(
+                                              padding: EdgeInsets.all(
+                                                context.sWidth * 0.03,
+                                              ),
+                                              child: ListTile(
+                                                shape: RoundedRectangleBorder(
+                                                  // Use RoundedRectangleBorder for rounded corners
+                                                  borderRadius: BorderRadius.circular(context
+                                                      .sWidth *
+                                                      0.05), // Set the border radius as you prefer
+                                                ),
+                                                leading: Text(
+                                                  "🧑‍⚕️",
+                                                  style: context.emojiStyle(),
+                                                ),
+                                                trailing: const FaIcon(
+                                                    FontAwesomeIcons.arrowRight),
+                                                tileColor: const Color(0xFFFBECED),
+                                                mouseCursor: MouseCursor.uncontrolled,
+                                                title: Text(
+                                                  "Sağlık İşlemleri",
+                                                  style: context.hizliMenuTitleStyle(),
+                                                ),
+                                                subtitle: Text(
+                                                  "Hastahane faturalarınızı yönetinizi.",
+                                                  style: context.hizliMenuSubtitleStyle(),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            //color: Colors.orange,
+                                            width: context.sWidth * 0.95,
+                                            height: context.sHeight * 0.15,
+                                            child: Padding(
+                                              padding: EdgeInsets.all(
+                                                context.sWidth * 0.03,
+                                              ),
+                                              child: ListTile(
+                                                shape: RoundedRectangleBorder(
+                                                  // Use RoundedRectangleBorder for rounded corners
+                                                  borderRadius: BorderRadius.circular(context
+                                                      .sWidth *
+                                                      0.05), // Set the border radius as you prefer
+                                                ),
+                                                leading: Text(
+                                                  "💸",
+                                                  style: context.emojiStyle(),
+                                                ),
+                                                trailing: const FaIcon(
+                                                    FontAwesomeIcons.arrowRight),
+                                                tileColor: const Color(0xFFFDE4CF),
+                                                mouseCursor: MouseCursor.uncontrolled,
+                                                title: Text(
+                                                  "İş Masrafları",
+                                                  style: context.hizliMenuTitleStyle(),
+                                                ),
+                                                subtitle: Text(
+                                                  "İş ile ilgili masraflarınızı yönetiniz.",
+                                                  style: context.hizliMenuSubtitleStyle(),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        children: [
+                                          SizedBox(
+                                            //color: Colors.red,
+                                            width: context.sWidth,
+                                            height: context.sHeight * 0.15,
+                                            child:Padding(
+                                              padding: EdgeInsets.all(
+                                                context.sWidth * 0.03,
+                                              ),
+                                              child: Badge(
+                                                backgroundColor: Colors.red,
+                                                label: Text(
+                                                  "1",
+                                                  style: context.badgeStyle(),
+                                                ),
+                                                child: ListTile(
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(
+                                                        context.sWidth * 0.05),
+                                                  ),
+                                                  onTap: () {
+                                                    showModalBottomSheet<void>(
+                                                      context: context,
+                                                      builder: (BuildContext context) {
+                                                        return Container(
+                                                          height: context.sHeight,
+                                                          color: const Color(0xFFFAEDCD),
+                                                          child: Padding(
+                                                            padding: EdgeInsets.all(
+                                                                context.sWidth * 0.04),
+                                                            child: Column(
+                                                              crossAxisAlignment:
+                                                              CrossAxisAlignment.start,
+                                                              children: <Widget>[
+                                                                //hızlı menü iş seyehatıysa gerekli maddeleri içine doldur.
+                                                                Column(
+                                                                  crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                                  children: <Widget>[
+                                                                    Text(
+                                                                      'İş Seyehati giriş',
+                                                                      style: context
+                                                                          .hizliMenuStyle(),
+                                                                    ),
+                                                                    context
+                                                                        .emptyWidget(0.02),
+                                                                    Text(
+                                                                      'İş Seyehati görüntüleme',
+                                                                      style: context
+                                                                          .hizliMenuStyle(),
+                                                                    ),
+                                                                    context
+                                                                        .emptyWidget(0.02),
+                                                                    Badge(
+                                                                      backgroundColor:
+                                                                      const Color(
+                                                                          0xFFFAEDCD),
+                                                                      label: Text(
+                                                                        "1",
+                                                                        style: context
+                                                                            .badgeStyle(),
+                                                                      ),
+                                                                      child: Text(
+                                                                        'İş Seyehati onaylama',
+                                                                        style: context
+                                                                            .hizliMenuStyle(),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                  },
+                                                  leading: Text(
+                                                    "🛫",
+                                                    style: context.emojiStyle(),
+                                                  ),
+                                                  trailing: const FaIcon(
+                                                      FontAwesomeIcons.arrowRight),
+                                                  tileColor: const Color(0xF1C0E861),
+                                                  mouseCursor: MouseCursor.uncontrolled,
+                                                  title: Text(
+                                                    "İş seyehatı",
+                                                    style: context.hizliMenuTitleStyle(),
+                                                  ),
+                                                  subtitle: Text(
+                                                    "Seyehatlarınızı planlayınız",
+                                                    style: context.hizliMenuSubtitleStyle(),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            //color: Colors.orange,
+                                            width: context.sWidth,
+                                            height: context.sHeight * 0.15,
+                                            child: Padding(
+                                              padding: EdgeInsets.all(
+                                                context.sWidth * 0.03,
+                                              ),
+                                              child: ListTile(
+                                                shape: RoundedRectangleBorder(
+                                                  // Use RoundedRectangleBorder for rounded corners
+                                                  borderRadius: BorderRadius.circular(context
+                                                      .sWidth *
+                                                      0.05), // Set the border radius as you prefer
+                                                ),
+                                                leading: Text(
+                                                  "🧑‍⚕️",
+                                                  style: context.emojiStyle(),
+                                                ),
+                                                trailing: const FaIcon(
+                                                    FontAwesomeIcons.arrowRight),
+                                                tileColor: const Color(0xFFFBECED),
+                                                mouseCursor: MouseCursor.uncontrolled,
+                                                title: Text(
+                                                  "Sağlık İşlemleri",
+                                                  style: context.hizliMenuTitleStyle(),
+                                                ),
+                                                subtitle: Text(
+                                                  "Hastahane faturalarınızı yönetinizi.",
+                                                  style: context.hizliMenuSubtitleStyle(),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            //color: Colors.orange,
+                                            width: context.sWidth,
+                                            height: context.sHeight * 0.15,
+                                            child: Padding(
+                                              padding: EdgeInsets.all(
+                                                context.sWidth * 0.03,
+                                              ),
+                                              child: ListTile(
+                                                shape: RoundedRectangleBorder(
+                                                  // Use RoundedRectangleBorder for rounded corners
+                                                  borderRadius: BorderRadius.circular(context
+                                                      .sWidth *
+                                                      0.05), // Set the border radius as you prefer
+                                                ),
+                                                leading: Text(
+                                                  "💸",
+                                                  style: context.emojiStyle(),
+                                                ),
+                                                trailing: const FaIcon(
+                                                    FontAwesomeIcons.arrowRight),
+                                                tileColor: const Color(0xFFFDE4CF),
+                                                mouseCursor: MouseCursor.uncontrolled,
+                                                title: Text(
+                                                  "İş Masrafları",
+                                                  style: context.hizliMenuTitleStyle(),
+                                                ),
+                                                subtitle: Text(
+                                                  "İş ile ilgili masraflarınızı yönetiniz.",
+                                                  style: context.hizliMenuSubtitleStyle(),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                HizliMenu(
-                                    Color(0xFFFBECED),
-                                    "Sağlık İşlemleri",
-                                    "Hastahane faturalarını yönetiniz.",
-                                    "🧑‍⚕")
-                                /*Container(color: Colors.red,width: 100.0,),
-                                Container(color: Colors.red,),
-                                Container(color: Colors.red,)*/
+
                               ],
                             ),
                           ),
@@ -283,25 +609,32 @@ class MainPage extends StatelessWidget {
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            AxaAltSayfa(Color(0xFFCCD5AE), "Axa'da Hayat","🏆"),
-                            AxaAltSayfa(Color(0xFFE9EDC9), "İş sürekliliği","🧑‍💻"),
                             AxaAltSayfa(
-                                Color(0xFFFEFAE0), "Başarı prensipleri","🎖️"),
+                                Color(0xFFCCD5AE), "Axa'da Hayat", "🏆"),
+                            AxaAltSayfa(
+                                Color(0xFFE9EDC9), "İş sürekliliği", "🧑‍💻"),
+                            AxaAltSayfa(
+                                Color(0xFFFEFAE0), "Başarı prensipleri", "🎖️"),
                           ],
                         ),
                         context.emptyWidget(0.02),
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            AxaAltSayfa(Color(0xFFFAEDCD), "Taahütler","✍️"),
+                            AxaAltSayfa(Color(0xFFFAEDCD), "Taahütler", "✍️"),
                             AxaAltSayfa(
-                                Color(0xFFD4A373), "Sadelik manifestosu","🎨"),
-                            AxaAltSayfa(Color(0xFFD4A373), "Poliçeme ","🎫"),
+                                Color(0xFFD4A373), "Sadelik manifestosu", "🎨"),
+                            AxaAltSayfa(Color(0xFFD4A373), "Poliçeme ", "🎫"),
                           ],
                         )
                       ],
                     ),
 
+                    const Center(
+                        child: Text(
+                      "Uygulamalar",
+                      style: TextStyle(color: Colors.red),
+                    ))
 
                     //axada hayata girince yapılacaklar
                   ],
