@@ -3,8 +3,6 @@ import 'extension.dart';
 
 class Duyuru extends StatelessWidget {
 
-
-
   @override
   Widget build(BuildContext context) {
     return Container(

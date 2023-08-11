@@ -2,86 +2,47 @@ import 'package:axa_biz/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+
+//badge olmayan hızlı menü seçenkleri için ayrı class oluşturuldu
 class HizliMenu extends StatelessWidget {
   final Color color;
-  final String text1;
-  final String text2;
+  final String title;
+  final String subtitle;
   final String emoji;
 
-  HizliMenu(this.color, this.text1, this.text2, this.emoji);
+  const HizliMenu({super.key, required this.color, required this.title, required this.subtitle, required this.emoji});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(
-        context.sWidth * 0.03,
-      ),
-      child: Badge(
-        backgroundColor: Colors.red,
-        label: Text(
-          "1",
-          style: context.badgeStyle(),
+    return SizedBox(
+
+      width: context.sWidth * 0.95,
+      height: context.sHeight * 0.15,
+      child: Padding(
+        padding: EdgeInsets.all(
+          context.sWidth * 0.03,
         ),
         child: ListTile(
-          onTap: () {
-            showModalBottomSheet<void>(
-              context: context,
-              builder: (BuildContext context) {
-                return Container(
-                  height: context.sHeight,
-                  color: Colors.amber,
-                  child: Padding(
-                      padding: EdgeInsets.all(context.sWidth * 0.04),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          if (text1 ==
-                              "İş seyehatı") //hızlı menü iş seyehatıysa gerekli maddeleri içine doldur.
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  'İş Seyehati giriş',
-                                  style: context.hizliMenuStyle(),
-                                ),
-                                context.emptyWidget(0.02),
-                                Text(
-                                  'İş Seyehati görüntüleme',
-                                  style: context.hizliMenuStyle(),
-                                ),
-                                context.emptyWidget(0.02),
-                                Badge(
-                                  backgroundColor: Colors.amber,
-                                  label: Text(
-                                    "1",
-                                    style: context.badgeStyle(),
-                                  ),
-                                  child: Text(
-                                    'İş Seyehati onaylama',
-                                    style: context.hizliMenuStyle(),
-                                  ),
-                                ),
-                              ],
-                            ),
-                        ],
-                      )),
-                );
-              },
-            );
-          },
+          shape: RoundedRectangleBorder(
+            // Use RoundedRectangleBorder for rounded corners
+            borderRadius: BorderRadius.circular(context
+                .sWidth *
+                0.05), // Set the border radius as you prefer
+          ),
           leading: Text(
             emoji,
             style: context.emojiStyle(),
           ),
-          trailing: const FaIcon(FontAwesomeIcons.arrowRight),
+          trailing: const FaIcon(
+              FontAwesomeIcons.arrowRight),
           tileColor: color,
           mouseCursor: MouseCursor.uncontrolled,
           title: Text(
-            text1,
+            title,
             style: context.hizliMenuTitleStyle(),
           ),
           subtitle: Text(
-            text2,
+            subtitle,
             style: context.hizliMenuSubtitleStyle(),
           ),
         ),

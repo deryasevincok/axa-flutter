@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//TODO EXTENSION KULLANIMINI DAHA DA ARAŞTIR
 
 extension ContextExtSize on BuildContext {
   double get sWidth => MediaQuery.of(this).size.width;
@@ -13,6 +14,18 @@ extension ContextExtDynamicSize on BuildContext {
 extension EmptyWidget on BuildContext {
   Widget emptyWidget(double value) => SizedBox(
         height: dynamicHeight(value),
+      );
+}
+
+extension Text1 on BuildContext {
+  Text gununYemegiText(String value) => Text(
+        value,
+        style: gununYemegiTextStyle(),
+      );
+
+  Text fikrimVarText(String value) => Text(
+        value,
+        style: fikrimVarTextStyle(),
       );
 }
 
@@ -75,6 +88,16 @@ extension TextStyle1 on BuildContext {
         fontSize: sWidth * 0.1,
       );
 
+  TextStyle selectedTabBarStyle() => TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: sHeight * 0.025,
+      );
+
+  TextStyle unselectedTabBarStyle() => TextStyle(
+        fontWeight: FontWeight.w400,
+        fontSize: sHeight * 0.025,
+      );
+
   TextStyle izinIslemleriTitleStyle() => TextStyle(
       fontSize: sWidth * 0.05,
       color: Colors.black,
@@ -96,15 +119,15 @@ extension TextStyle1 on BuildContext {
   TextStyle gununYemegiTextStyle() =>
       TextStyle(fontSize: sWidth * 0.05, fontFamily: 'Jost');
 
-  TextStyle hamburgerStyle() =>
-      TextStyle(fontSize: sHeight * 0.20);
+  TextStyle hamburgerStyle() => TextStyle(fontSize: sHeight * 0.20);
 
   TextStyle fikrimVarTextStyle() => TextStyle(
       fontSize: sWidth * 0.06, fontFamily: 'Jost', fontWeight: FontWeight.w700);
 
   TextStyle duyuruIsimStyle() => TextStyle(
       fontSize: sWidth * 0.06,
-      color: Colors.black,fontFamily: 'Jost',
+      color: Colors.black,
+      fontFamily: 'Jost',
       fontWeight: FontWeight.w500);
 
   TextStyle duyuruStyle() => TextStyle(
