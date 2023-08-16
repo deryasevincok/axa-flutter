@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//TODO EXTENSION KULLANIMINI DAHA DA ARAŞTIR
+//TODO EXTENSION KULLANIMINI BİRAZ DAHA ARAŞTIR
 
 extension ContextExtSize on BuildContext {
   double get sWidth => MediaQuery.of(this).size.width;
@@ -38,7 +38,7 @@ extension TextStyle1 on BuildContext {
       );
 
   TextStyle loginTextStyle() => TextStyle(
-        fontSize: sWidth * 0.14,
+        fontSize: sWidth * 0.15,
         fontWeight: FontWeight.w800,
       );
 
@@ -51,7 +51,7 @@ extension TextStyle1 on BuildContext {
   TextStyle textFormStyle() => TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.w700,
-        fontSize: sWidth * 0.06,
+        fontSize: sWidth * 0.05,
       );
 
   TextStyle badgeStyle() => TextStyle(
@@ -85,7 +85,7 @@ extension TextStyle1 on BuildContext {
   TextStyle mainTitleStyle() => TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.w700,
-        fontSize: sWidth * 0.1,
+        fontSize: sWidth * 0.08,
       );
 
   TextStyle selectedTabBarStyle() => TextStyle(
@@ -122,7 +122,7 @@ extension TextStyle1 on BuildContext {
   TextStyle hamburgerStyle() => TextStyle(fontSize: sHeight * 0.20);
 
   TextStyle fikrimVarTextStyle() => TextStyle(
-      fontSize: sWidth * 0.06, fontFamily: 'Jost', fontWeight: FontWeight.w700);
+      fontSize: sWidth * 0.07, fontFamily: 'Jost', fontWeight: FontWeight.w700);
 
   TextStyle duyuruIsimStyle() => TextStyle(
       fontSize: sWidth * 0.06,
@@ -131,8 +131,15 @@ extension TextStyle1 on BuildContext {
       fontWeight: FontWeight.w500);
 
   TextStyle duyuruStyle() => TextStyle(
-      fontSize: sWidth * 0.08,
+      fontSize: sWidth * 0.06,
       color: Colors.black,
       fontFamily: 'Jost',
-      fontWeight: FontWeight.w500);
+      fontWeight: FontWeight.w400);
+
+  TextStyle axaHayatTextStyle() => const TextStyle(
+      color: Colors.black, fontFamily: 'Jost', fontWeight: FontWeight.w700);
+
+  TextStyle axaHayatEmojiStyle() => TextStyle(
+    color: Colors.black,
+    fontSize: sWidth * 0.09,);
 }

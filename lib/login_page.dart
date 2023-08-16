@@ -18,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
           body: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/siyah.jpg"),
+                image: AssetImage("assets/araba.png"),
                 fit: BoxFit.cover, //ekran dolduruldu .jpg ile
               ),
             ),
@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                                         ),
                                   ),
                                 ),
-                                EmptyWidget(context).emptyWidget(0.02),
+                                context.emptyWidget(0.02),
                                 TextFormField(
                                   decoration: InputDecoration(
                                     enabledBorder: const UnderlineInputBorder(

@@ -1,7 +1,7 @@
-import 'package:axa_biz/login_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'extension.dart';
+import 'login_page.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -14,14 +14,13 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      //Container üstüne Text ve Card widgetlerı koyuldu Stack sayesinde
       children: <Widget>[
         Scaffold(
           body: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/galata.jpg"),
-                fit: BoxFit.cover, //ekran dolduruldu .jpg ile
+                image: AssetImage("assets/galata.png"),
+                fit: BoxFit.cover,
               ),
             ),
             padding: EdgeInsets.all(context.sHeight * 0.03),
@@ -29,9 +28,9 @@ class _InputPageState extends State<InputPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  //RotationTransition(turns: AlwaysStoppedAnimation(15/360)), //saat yönünde rotate
                   Transform.rotate(
                     angle: -math.pi / context.sHeight * 70,
+                    //alignment: Alignment.centerRight,
                     child: Text(
                       "AXA",
                       style: context.getStartedTitleStyle(),
@@ -39,14 +38,18 @@ class _InputPageState extends State<InputPage> {
                   ),
 
                   Padding(
-                  //padding: EdgeInsets.symmetric(horizontal: context.sHeight * 0.02,vertical: context.sHeight * 0.05),
-                    padding: EdgeInsets.only(left: context.sHeight * 0.01,right: context.sHeight * 0.01,bottom: context.sHeight * 0.03 ),
+                    padding: EdgeInsets.only(
+                      left: context.sHeight * 0.01,
+                      right: context.sHeight * 0.01,
+                      bottom: context.sHeight * 0.03,
+                    ),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const LoginPage()),
+                            builder: (context) => const LoginPage(),
+                          ),
                         );
                       },
                       child: Container(
@@ -62,8 +65,8 @@ class _InputPageState extends State<InputPage> {
                                 .textTheme
                                 .headlineLarge!
                                 .merge(
-                                  context.buttonTextStyle(),
-                                ),
+                              context.buttonTextStyle(),
+                            ),
                           ),
                         ),
                       ),

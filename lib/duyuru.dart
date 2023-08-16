@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'extension.dart';
 
 class Duyuru extends StatelessWidget {
+  const Duyuru({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,29 +38,32 @@ class Duyuru extends StatelessWidget {
                     ],
                   ),
                 ),
-                Row(
-                  children: [
-                    CircleAvatar(
-                      radius: context.sWidth * 0.08,
-                      backgroundImage: AssetImage('assets/galata.jpg'),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(context.sWidth * 0.02),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Derya",
-                            style: context.duyuruIsimStyle(),
-                          ),
-                          Text(
-                            "Sevinçok",
-                            style: context.duyuruIsimStyle(),
-                          ),
-                        ],
+                Padding(
+                  padding: EdgeInsets.only(left: context.sHeight * 0.02),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: context.sWidth * 0.07,
+                        backgroundImage: const AssetImage('assets/bahadir_kalay.jpg'),
                       ),
-                    )
-                  ],
+                      Padding(
+                        padding: EdgeInsets.all(context.sWidth * 0.02),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Recep",
+                              style: context.duyuruIsimStyle(),
+                            ),
+                            Text(
+                              "Öztürk",
+                              style: context.duyuruIsimStyle(),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),

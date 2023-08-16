@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'extension.dart';
 
 class IzinIslemleri extends StatelessWidget {
@@ -14,7 +13,7 @@ class IzinIslemleri extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.all(5.0),
+        padding: EdgeInsets.all(context.sWidth * 0.03),
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(

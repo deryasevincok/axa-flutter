@@ -5,7 +5,7 @@ import 'badge_hizli_menu.dart';
 import 'duyuru.dart';
 import 'izin_islemleri.dart';
 import 'axa_alt_sayfa.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -34,7 +34,7 @@ class MainPage extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "DERYA👋",
+                            "OZAN👋",
                             style: Theme.of(context)
                                 .textTheme
                                 .headlineLarge!
@@ -48,7 +48,7 @@ class MainPage extends StatelessWidget {
                   ),
                   CircleAvatar(
                     radius: context.sWidth * 0.1,
-                    backgroundImage: const AssetImage('assets/galata.jpg'),
+                    backgroundImage: const AssetImage('assets/bahadir_kalay.jpg'),
                   ),
                 ],
               ),
@@ -64,7 +64,7 @@ class MainPage extends StatelessWidget {
                     Theme.of(context).textTheme.headlineLarge!.merge(
                           context.unselectedTabBarStyle(),
                         ),
-                unselectedLabelColor: Colors.grey,
+                unselectedLabelColor: Colors.black,
                 tabs: const [
                   Tab(
                     text: "Bana Özel",
@@ -77,6 +77,7 @@ class MainPage extends StatelessWidget {
                   )
                 ],
               ),
+              context.emptyWidget(0.02),
               Expanded(
                 child: TabBarView(
                   children: [
@@ -115,7 +116,7 @@ class MainPage extends StatelessWidget {
                             ],
                           ),
 
-                          //BEYAZ EKRAN SORUNU HIZLI MENU TEXTİNİ KULLANMAYARAK GİDERİLDİ
+                          //BEYAZ EKRAN SORUNU HIZLI MENU textini KULLANMAYARAK GİDERİLDİ
                           Padding(
                             padding: EdgeInsets.only(top: context.sWidth * 0.1),
                             child: Column(
@@ -278,7 +279,7 @@ class MainPage extends StatelessWidget {
 
                     Column(
                       children: [
-                        SingleChildScrollView(
+                        const SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children: [
