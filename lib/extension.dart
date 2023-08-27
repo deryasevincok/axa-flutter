@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//TODO EXTENSION KULLANIMINI BİRAZ DAHA ARAŞTIR
+
 
 extension ContextExtSize on BuildContext {
   double get sWidth => MediaQuery.of(this).size.width;
@@ -18,14 +18,14 @@ extension EmptyWidget on BuildContext {
 }
 
 extension Text1 on BuildContext {
-  Text gununYemegiText(String value) => Text(
+  Text mealOfDayText(String value) => Text(
         value,
-        style: gununYemegiTextStyle(),
+        style: foodTextStyle(),
       );
 
-  Text fikrimVarText(String value) => Text(
+  Text ideaText(String value) => Text(
         value,
-        style: fikrimVarTextStyle(),
+        style: ideaTextStyle(),
       );
 }
 
@@ -39,14 +39,14 @@ extension TextStyle1 on BuildContext {
 
   TextStyle loginTextStyle() => TextStyle(
         fontSize: sWidth * 0.15,
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w900,
       );
 
   TextStyle logintextStyleRed() => TextStyle(
       fontSize: sWidth * 0.14, fontWeight: FontWeight.w800, color: Colors.red);
 
   TextStyle buttonTextStyle() => TextStyle(
-      color: Colors.white, fontFamily: 'Playfair', fontSize: sWidth * 0.06);
+      color: Colors.white, fontFamily: 'Playfair', fontSize: sWidth * 0.045,fontWeight: FontWeight.w800);
 
   TextStyle textFormStyle() => TextStyle(
         color: Colors.white,
@@ -60,14 +60,14 @@ extension TextStyle1 on BuildContext {
         fontWeight: FontWeight.w700,
       );
 
-  TextStyle hizliMenuStyle() => TextStyle(
+  TextStyle quickMenuStyle() => TextStyle(
         fontSize: sWidth * 0.06,
         fontWeight: FontWeight.bold,
         fontFamily: 'Jost',
         color: Colors.black,
       );
 
-  TextStyle hizliMenuTitleStyle() => TextStyle(
+  TextStyle quickMenuTitleStyle() => TextStyle(
         color: Colors.black,
         fontSize: sHeight * 0.03,
       );
@@ -77,7 +77,7 @@ extension TextStyle1 on BuildContext {
         fontSize: sHeight * 0.05,
       );
 
-  TextStyle hizliMenuSubtitleStyle() => TextStyle(
+  TextStyle quickMenuSubtitleStyle() => TextStyle(
         color: Colors.black,
         fontSize: sHeight * 0.02,
       );
@@ -98,48 +98,63 @@ extension TextStyle1 on BuildContext {
         fontSize: sHeight * 0.025,
       );
 
-  TextStyle izinIslemleriTitleStyle() => TextStyle(
+  TextStyle permissionTitleStyle() => TextStyle(
       fontSize: sWidth * 0.05,
       color: Colors.black,
       fontWeight: FontWeight.bold,
       decoration: TextDecoration.underline);
 
-  TextStyle izinIslemleriTextStyle() => TextStyle(
-        fontSize: sWidth * 0.05,
+  TextStyle permissionText1Style() => TextStyle(
+        fontFamily: 'Jost',
+        fontSize: 23.0,
         color: Colors.black,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w500,
       );
+
+  TextStyle permissionText2Style() => TextStyle(
+    fontFamily: 'Jost',
+    fontSize: 30.0,
+    color: Colors.black,
+    fontWeight: FontWeight.w700,
+  );
+
+  TextStyle permissionEmojiStyle() => TextStyle(
+    fontFamily: 'Jost',
+    fontSize: 30.0,
+    color: Colors.black,
+    fontWeight: FontWeight.w400,
+  );
 
   TextStyle titleStyle() => TextStyle(
       color: Colors.black, fontSize: sWidth * 0.07, fontFamily: 'Jost');
 
-  TextStyle gununYemegiTitleStyle() => TextStyle(
+  TextStyle foodTitleStyle() => TextStyle(
       fontSize: sWidth * 0.05, fontWeight: FontWeight.w700, fontFamily: 'Jost');
 
-  TextStyle gununYemegiTextStyle() =>
+  TextStyle foodTextStyle() =>
       TextStyle(fontSize: sWidth * 0.05, fontFamily: 'Jost');
 
   TextStyle hamburgerStyle() => TextStyle(fontSize: sHeight * 0.20);
 
-  TextStyle fikrimVarTextStyle() => TextStyle(
+  TextStyle ideaTextStyle() => TextStyle(
       fontSize: sWidth * 0.07, fontFamily: 'Jost', fontWeight: FontWeight.w700);
 
-  TextStyle duyuruIsimStyle() => TextStyle(
+  TextStyle announcementNameStyle() => TextStyle(
       fontSize: sWidth * 0.06,
       color: Colors.black,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w500);
 
-  TextStyle duyuruStyle() => TextStyle(
+  TextStyle announcementStyle() => TextStyle(
       fontSize: sWidth * 0.06,
       color: Colors.black,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w400);
 
-  TextStyle axaHayatTextStyle() => const TextStyle(
+  TextStyle axaLifeTextStyle() => const TextStyle(
       color: Colors.black, fontFamily: 'Jost', fontWeight: FontWeight.w700);
 
-  TextStyle axaHayatEmojiStyle() => TextStyle(
+  TextStyle axaLifeEmojiStyle() => TextStyle(
     color: Colors.black,
     fontSize: sWidth * 0.09,);
 }

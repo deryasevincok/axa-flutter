@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'extension.dart';
+import '../extension.dart';
 
-class Duyuru extends StatelessWidget {
-  const Duyuru({super.key});
+class Announcement extends StatelessWidget {
+  const Announcement({super.key});
 
 
   @override
@@ -29,11 +29,11 @@ class Duyuru extends StatelessWidget {
                     children: [
                       Text(
                         "Doğum günün",
-                        style: context.duyuruStyle(),
+                        style: context.announcementStyle(),
                       ),
                       Text(
                         "Kutlu olsun",
-                        style: context.duyuruStyle(),
+                        style: context.announcementStyle(),
                       ),
                     ],
                   ),
@@ -53,11 +53,11 @@ class Duyuru extends StatelessWidget {
                           children: [
                             Text(
                               "Recep",
-                              style: context.duyuruIsimStyle(),
+                              style: context.announcementNameStyle(),
                             ),
                             Text(
                               "Öztürk",
-                              style: context.duyuruIsimStyle(),
+                              style: context.announcementNameStyle(),
                             ),
                           ],
                         ),

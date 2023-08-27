@@ -1,21 +1,20 @@
 import 'package:axa_biz/extension.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 
 //badge olmayan hızlı menü seçenkleri için ayrı class oluşturuldu
-class HizliMenu extends StatelessWidget {
+class QuickMenu extends StatelessWidget {
   final Color color;
   final String title;
   final String subtitle;
   final String emoji;
 
-  const HizliMenu({super.key, required this.color, required this.title, required this.subtitle, required this.emoji});
+  const QuickMenu({super.key, required this.color, required this.title, required this.subtitle, required this.emoji});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-
       width: context.sWidth * 0.95,
       height: context.sHeight * 0.15,
       child: Padding(
@@ -33,17 +32,16 @@ class HizliMenu extends StatelessWidget {
             emoji,
             style: context.emojiStyle(),
           ),
-          trailing: const FaIcon(
-              FontAwesomeIcons.arrowRight),
+          trailing: Image.asset("assets/chevron_right.png"),
           tileColor: color,
           mouseCursor: MouseCursor.uncontrolled,
           title: Text(
             title,
-            style: context.hizliMenuTitleStyle(),
+            style: context.quickMenuTitleStyle(),
           ),
           subtitle: Text(
             subtitle,
-            style: context.hizliMenuSubtitleStyle(),
+            style: context.quickMenuSubtitleStyle(),
           ),
         ),
       ),
