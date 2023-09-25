@@ -21,7 +21,7 @@ class Permission extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        height: context.sHeight * 0.18,
+        height: context.sHeight * 0.20,
         padding: EdgeInsets.all(context.sWidth * 0.003),
         decoration: BoxDecoration(
           color: color,

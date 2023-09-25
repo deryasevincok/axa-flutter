@@ -79,7 +79,7 @@ extension TextStyle1 on BuildContext {
 
   TextStyle quickMenuSubtitleStyle() => TextStyle(
         color: Colors.black,
-        fontSize: sHeight * 0.02,
+        fontSize: sHeight * 0.018,
       );
 
   TextStyle mainTitleStyle() => TextStyle(
@@ -151,8 +151,8 @@ extension TextStyle1 on BuildContext {
       fontFamily: 'Jost',
       fontWeight: FontWeight.w400);
 
-  TextStyle axaLifeTextStyle() => const TextStyle(
-      color: Colors.black, fontFamily: 'Jost', fontWeight: FontWeight.w700);
+  TextStyle axaLifeTextStyle() => TextStyle(
+      color: Colors.black, fontFamily: 'Jost', fontWeight: FontWeight.w700,fontSize: sWidth * 0.035);
 
   TextStyle axaLifeEmojiStyle() => TextStyle(
     color: Colors.black,

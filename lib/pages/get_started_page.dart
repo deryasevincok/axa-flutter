@@ -1,16 +1,44 @@
+import 'package:axa_biz/pages/main_page/main_page.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math' as math;
 import '../extension.dart';
 import 'login_page.dart';
 
-class InputPage extends StatefulWidget {
-  const InputPage({Key? key}) : super(key: key);
+class GetStartedPage extends StatefulWidget {
+  const GetStartedPage({Key? key}) : super(key: key);
 
   @override
-  State<InputPage> createState() => _InputPageState();
+  State<GetStartedPage> createState() => _GetStartedPageState();
 }
 
-class _InputPageState extends State<InputPage> {
+class _GetStartedPageState extends State<GetStartedPage> {
+  String? finalUsername;
+  String? finalPassword;
+  String? firstName;
+
+  //kullanıcı adı, şifre ve isim bilgileri çağırılıyor
+  void getSavedCredentials() async {
+    final prefs = await SharedPreferences.getInstance();
+    final savedUsername = prefs.getString('username');
+    final savedPassword = prefs.getString('password');
+    final obtainedName = prefs.getString('first name');
+    setState(
+          () {
+            finalUsername = savedUsername;
+            finalPassword = savedPassword;
+            firstName = obtainedName;
+            },
+      );
+  }
+
+  //gerekli görüldüğünde bilgileri temizlemek için
+  void clearCredentials() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -35,16 +63,18 @@ class _InputPageState extends State<InputPage> {
                       "AXA",
                       style: context.getStartedTitleStyle(),
                     ),
-                  ), //TODO İNGİLİZCE İSİMLER
+                  ),
 
                   Padding(
                     padding: EdgeInsets.only(bottom: context.sHeight * 0.025),
                     child: ElevatedButton(
                       onPressed: () {
+                        getSavedCredentials();
+                        //clearCredentials();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const LoginPage(),
+                            builder: (context) => finalUsername == null ? const LoginPage() : MainPage(firstName: firstName) ,
                           ),
                         );
                       },

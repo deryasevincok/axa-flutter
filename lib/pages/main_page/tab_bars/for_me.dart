@@ -34,7 +34,7 @@ class ForMe extends StatelessWidget {
                   color: Color(0xFFFDE4CF),
                   text1: "Kullanılan",
                   text2: "3",
-                  emoji: "🥲",
+                  emoji: "😢",
                   isActive: true),
               Permission(
                   color: Color(0xFFF1C0E8),
@@ -76,7 +76,7 @@ class ForMe extends StatelessWidget {
                             color: Color(0xFFFBECED),
                             title: "Sağlık İşlemleri",
                             subtitle:
-                            "Hastahane faturalarınızı yönetinizi.",
+                            "Hastahane faturalarınızı yönetiniz.",
                             emoji: "🧑‍⚕️",
                           ),
                         ],

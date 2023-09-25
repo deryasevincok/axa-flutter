@@ -1,3 +1,4 @@
+import 'package:axa_biz/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'pages/get_started_page.dart';
 
@@ -21,7 +22,7 @@ class BMICalculator extends StatelessWidget {
           // Burada diğer metin stilleri için de font family tanımlayabilirsiniz.
         ),
       ),
-      home: const InputPage(),
+      home: const GetStartedPage(),
     );
   }
 }

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../extension.dart';
 import 'package:axa_biz/pages/main_page/tab_bars/for_me.dart';
 import 'package:axa_biz/pages/main_page/tab_bars/axa_life.dart';
+import 'tab_bars/applications.dart';
 
 class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+  final String? firstName;
+
+  const MainPage({super.key, required this.firstName});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +37,7 @@ class MainPage extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              "OZAN👋",
+                              '${firstName?.toUpperCase()}👋',
                               style: Theme.of(context)
                                   .textTheme
                                   .headlineLarge!
@@ -81,17 +85,10 @@ class MainPage extends StatelessWidget {
               context.emptyWidget(0.02),
               const Expanded(
                 child: TabBarView(
-                  //todo tabbar ayır
                   children: [
-                    //bana özele girince yapılacaklar
-                    ForMe(),
-                    AxaLife(),
-                    Center(
-                        child: Text(
-                      "Uygulamalar",
-                      style: TextStyle(color: Colors.red),
-                    ))
-
+                    ForMe(), //bana özel sekmesinde yapılacaklar
+                    AxaLife(), //axa'da hayat sekmesinde yapılacaklar
+                    Applications(),  //Uygulamalar sekmesinde yapılacaklar
                     //axada hayata girince yapılacaklar
                   ],
                 ),
@@ -103,7 +100,5 @@ class MainPage extends StatelessWidget {
     );
   }
 }
-
-
 
 
