@@ -25,19 +25,19 @@ class ForMe extends StatelessWidget {
           Row(
             children: [
               Permission(
-                  color: Color(0xFFD5EEFD),
+                  color: const Color(0xFFD5EEFD),
                   text1: "Kalan izin",
                   text2: "12",
                   emoji: "😃",
                   isActive: true),
               Permission(
-                  color: Color(0xFFFDE4CF),
+                  color: const Color(0xFFFDE4CF),
                   text1: "Kullanılan",
                   text2: "3",
                   emoji: "😢",
                   isActive: true),
               Permission(
-                  color: Color(0xFFF1C0E8),
+                  color: const Color(0xFFF1C0E8),
                   text1: "Mazaret",
                   text2: "5",
                   emoji: "😃",

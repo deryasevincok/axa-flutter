@@ -1,8 +1,12 @@
-import 'package:axa_biz/api_service.dart';
+import 'package:axa_biz/Credentials.dart';
+import 'package:axa_biz/service/api_service.dart';
 import 'package:axa_biz/login_model.dart';
+import 'package:axa_biz/view_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
+import '../login_Service.dart';
+import '../snack_bar_helper.dart';
 import 'main_page/main_page.dart';
 import '../extension.dart';
 
@@ -20,55 +24,47 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  String? firstName;
+  Credentials credentials = Credentials();
 
-  //sharedprefences ile kullanılacak bilgiler hafızaya atıldı
-  void saveCredentials(
-      String username, String password, String firstName) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('username', username);
-    await prefs.setString('password', password);
-    await prefs.setString('first name', firstName);
-  }
 
-  void getFirstName(LoginModel user) {
-    String? name = user.firstName;
-    List<String> words = name!.split(" ");
-    firstName = words[0];
-  }
+  //todo provider -statemangement getx
 
-  Future<bool> login(String username, String password) async {
-    ApiService apiService = ApiService();
-
-    try {
-      if (await apiService.serviceLogin(username, password)) {
-        // Başarılı işlem
-        Response? response = apiService.response;
-        LoginModel user = LoginModel.fromJson(response!.data);
-        getFirstName(user);
-        return true;
-      } else {
-        // Hata durumu
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("sıkıntı"),
-          ),
-        );
-        return false;
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Bir hata oluştu: $e'),
-        ),
-      );
-    }
-    return false;
-  }
-
+  //todo mvvm mimarisi
   @override
   Widget build(BuildContext context) {
+    final ViewModel viewModel = Provider.of<ViewModel>(context);
+    Future<bool> login(String username, String password) async {
+      ApiService apiService = ApiService();
+
+      try {
+        if (await apiService.serviceLogin(username, password)) {
+          // Başarılı işlem
+          Response? response = apiService.response;
+          LoginModel user = LoginModel.fromJson(response!.data);
+          viewModel.username = credentials.getFirstName(user)!;
+          print(viewModel.username);
+          return true;
+        } else {
+          // Hata durumu
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("sıkıntı"),
+            ),
+          );
+          return false;
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Bir hata oluştu: $e'),
+          ),
+        );
+      }
+      return false;
+    }
+
+
     return Scaffold(
       resizeToAvoidBottomInset:
           true, //klaveden yazarken username'i ve passwordu görmek için kullanıldı
@@ -192,7 +188,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 context.emptyWidget(0.05),
                 ElevatedButton(
+
                   onPressed: () async {
+                    Credentials cred = Credentials();
                     if (formKey.currentState!.validate()) {
 
                       bool loginSuccessful = await login(
@@ -201,10 +199,9 @@ class _LoginPageState extends State<LoginPage> {
                       );
 
                       if (loginSuccessful) {
-                        saveCredentials(
+                        cred.saveCredentials(
                           usernameController.text.toString(),
                           passwordController.text.toString(),
-                          firstName!,
                         );
 
                         // ignore: use_build_context_synchronously
@@ -212,7 +209,6 @@ class _LoginPageState extends State<LoginPage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => MainPage(
-                              firstName: firstName,
                             ),
                           ),
                         );

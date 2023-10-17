@@ -1,17 +1,23 @@
+import 'package:axa_biz/Credentials.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../extension.dart';
 import 'package:axa_biz/pages/main_page/tab_bars/for_me.dart';
 import 'package:axa_biz/pages/main_page/tab_bars/axa_life.dart';
+import '../../view_model.dart';
 import 'tab_bars/applications.dart';
 
 class MainPage extends StatelessWidget {
-  final String? firstName;
+  const MainPage({super.key});
 
-  const MainPage({super.key, required this.firstName});
+  /*final String? firstName;
+
+  const MainPage({super.key, required this.firstName});*/
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = Provider.of<ViewModel>(context);
     return DefaultTabController(
       length: 3, // tab sayısı
       child: Scaffold(
@@ -37,7 +43,7 @@ class MainPage extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              '${firstName?.toUpperCase()}👋',
+                              '${viewModel.username}👋',
                               style: Theme.of(context)
                                   .textTheme
                                   .headlineLarge!

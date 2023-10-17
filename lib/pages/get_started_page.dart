@@ -1,6 +1,6 @@
+import 'package:axa_biz/Credentials.dart';
 import 'package:axa_biz/pages/main_page/main_page.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math' as math;
 import '../extension.dart';
 import 'login_page.dart';
@@ -13,31 +13,8 @@ class GetStartedPage extends StatefulWidget {
 }
 
 class _GetStartedPageState extends State<GetStartedPage> {
-  String? finalUsername;
-  String? finalPassword;
-  String? firstName;
 
-  //kullanıcı adı, şifre ve isim bilgileri çağırılıyor
-  void getSavedCredentials() async {
-    final prefs = await SharedPreferences.getInstance();
-    final savedUsername = prefs.getString('username');
-    final savedPassword = prefs.getString('password');
-    final obtainedName = prefs.getString('first name');
-    setState(
-          () {
-            finalUsername = savedUsername;
-            finalPassword = savedPassword;
-            firstName = obtainedName;
-            },
-      );
-  }
-
-  //gerekli görüldüğünde bilgileri temizlemek için
-  void clearCredentials() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.clear();
-  }
-
+  Credentials credentials = Credentials();
 
   @override
   Widget build(BuildContext context) {
@@ -64,17 +41,18 @@ class _GetStartedPageState extends State<GetStartedPage> {
                       style: context.getStartedTitleStyle(),
                     ),
                   ),
-
                   Padding(
                     padding: EdgeInsets.only(bottom: context.sHeight * 0.025),
                     child: ElevatedButton(
                       onPressed: () {
-                        getSavedCredentials();
-                        //clearCredentials();
+                        credentials.getSavedCredentials();
+                        //credentials.clearCredentials();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => finalUsername == null ? const LoginPage() : MainPage(firstName: firstName) ,
+                            builder: (context) => credentials.finalUsername == null
+                                ? const LoginPage()
+                                : const MainPage(),
                           ),
                         );
                       },
@@ -88,7 +66,8 @@ class _GetStartedPageState extends State<GetStartedPage> {
                         ),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(context.sHeight),
+                            borderRadius:
+                                BorderRadius.circular(context.sHeight),
                           ),
                         ),
                         backgroundColor: MaterialStateProperty.all(
@@ -112,5 +91,3 @@ class _GetStartedPageState extends State<GetStartedPage> {
     );
   }
 }
-
-
