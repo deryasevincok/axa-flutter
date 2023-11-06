@@ -1,23 +1,33 @@
-import 'package:axa_biz/Credentials.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../extension.dart';
 import 'package:axa_biz/pages/main_page/tab_bars/for_me.dart';
 import 'package:axa_biz/pages/main_page/tab_bars/axa_life.dart';
-import '../../view_model.dart';
 import 'tab_bars/applications.dart';
+import 'package:axa_biz/Credentials.dart';
 
-class MainPage extends StatelessWidget {
-  const MainPage({super.key});
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
 
-  /*final String? firstName;
+  @override
+  _MainPageState createState() => _MainPageState();
+}
 
-  const MainPage({super.key, required this.firstName});*/
+class _MainPageState extends State<MainPage> {
+  Credentials cred = Credentials();
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeCredentials();
+  }
+
+  _initializeCredentials() async {
+    await cred.getSavedCredentials();
+    setState(() {}); // State'i güncellemek için setState kullanın
+  }
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<ViewModel>(context);
     return DefaultTabController(
       length: 3, // tab sayısı
       child: Scaffold(
@@ -35,21 +45,18 @@ class MainPage extends StatelessWidget {
                       children: [
                         Text(
                           "MERHABA",
-                          style:
-                              Theme.of(context).textTheme.headlineLarge!.merge(
-                                    context.mainTitleStyle(),
-                                  ),
+                          style: Theme.of(context).textTheme.headlineLarge!.merge(
+                            context.mainTitleStyle(),
+                          ),
                         ),
                         Row(
                           children: [
                             Text(
-                              '${viewModel.username}👋',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineLarge!
-                                  .merge(
-                                    context.mainTitleStyle(),
-                                  ),
+                              //'${cred.firstName}👋',
+                              'DERYA👋',
+                              style: Theme.of(context).textTheme.headlineLarge!.merge(
+                                context.mainTitleStyle(),
+                              ),
                             ),
                           ],
                         ),
@@ -57,24 +64,22 @@ class MainPage extends StatelessWidget {
                     ),
                     CircleAvatar(
                       radius: context.sWidth * 0.1,
-                      backgroundImage:
-                          const AssetImage('assets/bahadir_kalay.jpg'),
+                      backgroundImage: const AssetImage('assets/bahadir_kalay.jpg'),
                     ),
                   ],
                 ),
               ),
               TabBar(
                 labelStyle: Theme.of(context).textTheme.headlineLarge!.merge(
-                      context.selectedTabBarStyle(),
-                    ),
+                  context.selectedTabBarStyle(),
+                ),
                 labelColor: Colors.black,
                 indicatorColor: Colors.red,
                 indicatorPadding: EdgeInsets.all(context.sWidth * 0.03),
                 indicatorWeight: context.sWidth * 0.02,
-                unselectedLabelStyle:
-                    Theme.of(context).textTheme.headlineLarge!.merge(
-                          context.unselectedTabBarStyle(),
-                        ),
+                unselectedLabelStyle: Theme.of(context).textTheme.headlineLarge!.merge(
+                  context.unselectedTabBarStyle(),
+                ),
                 unselectedLabelColor: Colors.black,
                 tabs: const [
                   Tab(
@@ -106,5 +111,3 @@ class MainPage extends StatelessWidget {
     );
   }
 }
-
-

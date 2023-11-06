@@ -1,14 +1,13 @@
 import 'package:axa_biz/Credentials.dart';
-import 'package:axa_biz/service/api_service.dart';
-import 'package:axa_biz/login_model.dart';
 import 'package:axa_biz/view_model.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../login_Service.dart';
+import '../service/login_service.dart';
 import '../snack_bar_helper.dart';
 import 'main_page/main_page.dart';
 import '../extension.dart';
+
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -18,52 +17,17 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  //global key
   final formKey = GlobalKey<FormState>();
 
   //Username ve password kontrol
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  Credentials credentials = Credentials();
+  Credentials cred = Credentials();
 
-
-  //todo provider -statemangement getx
-
-  //todo mvvm mimarisi
   @override
   Widget build(BuildContext context) {
-    final ViewModel viewModel = Provider.of<ViewModel>(context);
-    Future<bool> login(String username, String password) async {
-      ApiService apiService = ApiService();
-
-      try {
-        if (await apiService.serviceLogin(username, password)) {
-          // Başarılı işlem
-          Response? response = apiService.response;
-          LoginModel user = LoginModel.fromJson(response!.data);
-          viewModel.username = credentials.getFirstName(user)!;
-          print(viewModel.username);
-          return true;
-        } else {
-          // Hata durumu
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("sıkıntı"),
-            ),
-          );
-          return false;
-        }
-      } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Bir hata oluştu: $e'),
-          ),
-        );
-      }
-      return false;
-    }
-
 
     return Scaffold(
       resizeToAvoidBottomInset:
@@ -124,7 +88,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 context.emptyWidget(0.05),
                 Form(
-                  //TODO global key eklenecek
                   key: formKey,
                   child: Padding(
                     padding: EdgeInsets.all(context.sHeight * 0.03),
@@ -188,30 +151,36 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 context.emptyWidget(0.05),
                 ElevatedButton(
-
                   onPressed: () async {
-                    Credentials cred = Credentials();
-                    if (formKey.currentState!.validate()) {
+                    final ViewModel viewModel = Provider.of<ViewModel>(context,listen: false);
+                    LoginService loginService = LoginService();
 
-                      bool loginSuccessful = await login(
+                    if (formKey.currentState!.validate()) {
+                      bool loginSuccessful = await loginService.login(
+                        context,
                         usernameController.text.toString(),
                         passwordController.text.toString(),
                       );
 
                       if (loginSuccessful) {
-                        cred.saveCredentials(
+                        await cred.saveCredentials(
                           usernameController.text.toString(),
                           passwordController.text.toString(),
+                          viewModel.firstName,
                         );
+                        await cred.getSavedCredentials();
 
                         // ignore: use_build_context_synchronously
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MainPage(
-                            ),
+                            builder: (context) => MainPage(),
                           ),
                         );
+                      }
+                      else{
+                        // ignore: use_build_context_synchronously
+                        SnackBarHelper.showErrorSnackBar(context, "Giriş başarısız oldu.");
                       }
                     }
                   },

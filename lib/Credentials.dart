@@ -1,4 +1,3 @@
-import 'package:axa_biz/view_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'login_model.dart';
 
@@ -7,24 +6,23 @@ class Credentials{
   String? finalPassword;
   String? firstName;
 
-  void saveCredentials(
-      String username, String password) async {
+  Future<void> saveCredentials(
+      String username, String password , String firstName) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('username', username);
     await prefs.setString('password', password);
-    //await prefs.setString('first name', firstName);
+    await prefs.setString('first name', firstName);
   }
 
-  void getSavedCredentials() async {
+  Future<void> getSavedCredentials() async {
     final prefs = await SharedPreferences.getInstance();
     finalUsername = prefs.getString('username');
     finalPassword = prefs.getString('password');
     firstName = prefs.getString('first name');
-
   }
 
   String? getFirstName(LoginModel user) {
-    String? name = user.firstName;
+    String? name = user.name;
     List<String> words = name!.split(" ");
     firstName = words[0];
     return firstName;

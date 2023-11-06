@@ -35,7 +35,6 @@ class _GetStartedPageState extends State<GetStartedPage> {
                 children: <Widget>[
                   Transform.rotate(
                     angle: -math.pi / context.sHeight * 70,
-                    //alignment: Alignment.centerRight,
                     child: Text(
                       "AXA",
                       style: context.getStartedTitleStyle(),
@@ -46,20 +45,18 @@ class _GetStartedPageState extends State<GetStartedPage> {
                     child: ElevatedButton(
                       onPressed: () {
                         credentials.getSavedCredentials();
-                        //credentials.clearCredentials();
+                        credentials.clearCredentials();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => credentials.finalUsername == null
                                 ? const LoginPage()
-                                : const MainPage(),
+                                : MainPage(),
                           ),
                         );
                       },
-                      //TODO MVVM BAK
                       style: ButtonStyle(
                         padding: MaterialStateProperty.all(
-                          //EdgeInsets.only(left: 120.0,right: 120.0,top: 20.0,bottom: 20.0),
                           EdgeInsets.symmetric(
                               vertical: context.sHeight * 0.03,
                               horizontal: context.sWidth * 0.3),

@@ -2,19 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ViewModel extends ChangeNotifier {
-  int vehicleID = 0;
-  int vehBrandId = 0;
-  String vehBrand = "";
-  String vehStyle = "";
-  String uploader = "";
-  int uploaderID = 0;
-  int mbid = 0;
-  String photo = "";
-  String endDate = "";
-  int milage = 0;
-  String year = "";
-  String damageType = "";
-  String title = "";
   String username = "";
   String password = "";
   int? id;
@@ -38,7 +25,7 @@ class ViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  /*String get _firstName => firstName;
+  String get _firstName => firstName;
   set _firstName(String val) {
     firstName = val;
     notifyListeners();
@@ -53,5 +40,5 @@ class ViewModel extends ChangeNotifier {
     List<String> words = name!.split(" ");
     firstName = words[0];
     notifyListeners();
-  }*/
+  }
 }

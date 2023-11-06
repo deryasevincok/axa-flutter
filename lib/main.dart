@@ -11,8 +11,11 @@ class BMICalculator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ViewModel(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ViewModel()),
+      ],
+      //create: (context) => ViewModel(),
       child: MaterialApp(
         theme: ThemeData.dark().copyWith(
           colorScheme: const ColorScheme.light(
